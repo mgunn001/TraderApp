@@ -116,6 +116,6 @@
     padding: 2px;
   }
 
-  .card ul {
+  .card ul, .vehicle-detail-outer-wrapper ul {
     list-style-type: none;
   }

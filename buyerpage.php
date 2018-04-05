@@ -13,8 +13,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-
-
   <script src="./resource/scripts/sitescript.js"></script>
   <link rel="stylesheet" href="./resource/css/site.css">
    <link rel="stylesheet" href="./resource/css/buyerpage.css">
@@ -189,7 +187,7 @@
 	                <figure class="profile">
 	                    <img src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif" class="profile-avatar" alt="">
 	                </figure>
-	                <h4 class="card-title mt-3"><span class="make">Hundai</span><span class="model">I20</span><span class="year">(2017)</span></h4>
+	                <h4 class="card-title mt-3"><a href="./vehicledetails.php?vehicleID=1"><span class="make">Hundai</span><span class="model">I20</span><span class="year">(2017)</span></a></h4>
 	                <div class="card-text">
 	                	<ul>
 	                		<li> <span class="price" style="font-weight: bold">$5000</span></li>
@@ -223,7 +221,7 @@
 	            </div>
 	            <div class="card-footer">
 	                <small>click to know more info and contact seller</small>
-	                <button class="btn btn-primary float-right btn-sm">Contact Seller</button>
+	                <button class="btn btn-primary float-right btn-sm">More Info</button>
 	            </div>
 	        </div>
 	    </div>

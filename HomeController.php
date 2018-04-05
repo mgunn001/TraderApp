@@ -6,5 +6,4 @@
   echo $conn;
 
   echo 'Helloo From Home Controller';
-
 ?>
