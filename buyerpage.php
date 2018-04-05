@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Buyer Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+  <script src="./resource/scripts/sitescript.js"></script>
+  <link rel="stylesheet" href="./resource/css/site.css">
+   <link rel="stylesheet" href="./resource/css/buyerpage.css">
+  <style>
+
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Logo</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Buy</a></li>
+        <li><a href="#">Sell</a></li>
+      </ul>
+     <!--  <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul> -->
+    </div>
+  </div>
+</nav>
+
+
+<div class="container-fluid mandatory-filter-items-wrapper" >
+    <div class="mandatory-filter-items well">
+    	<form class="form-inline mandatory-filter-items-form" action="#">
+			  <div class="form-group">
+			    <input type="text" class="form-control vehicle-type" placeholder="Vehicle Type" title="Enter Vehicle Type" name='vehicleType' id="vehicletype">
+			  </div>
+			  <div class="form-group">		  
+			    <input type="text" class="form-control zip-code" placeholder="Zip Code" title="Enter Zip Code" name='zipCode' id="zipcode">
+			  </div>
+			  <div class="form-group">		  
+			    <input type="text" class="form-control within-miles" placeholder="50 Miles" name='miles' title="look with in miles" id="withinmiles">
+			  </div>
+			  <button type="submit" title='Click to Search' class="btn btn-default">Search</button>
+		</form>
+    </div>
+</div>
+
+<div class="container-fluid additional-filter-items-wrapper additional-filter-items well" style="margin-top:-1%;">
+	<div class="additional-filter-items">
+		<form class="form-inline additional-filter-items-form" action="#">
+			  <div class="form-group dropdown price-dropdown">
+				  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Price
+				  <span class="caret"></span></button>
+				  <ul class="dropdown-menu">
+				    <li> <a href="#"><label>Below $5K<input type="checkbox" value=1> </label></a></li>
+				    <li class="divider"></li>
+				   	<li> <a href="#"><label>$5k to $10k<input type="checkbox" value=2> </label></a></li>
+				    <li class="divider"></li>
+				    <li> <a href="#"><label>$10k to $15k<input type="checkbox" value=3> </label></a></li>
+				    <li class="divider"></li>
+				    <li> <a href="#"><label>$15k to $20<input type="checkbox" value=4> </label></a></li>
+				    <li class="divider"></li>
+				    <li> <a href="#"><label>Above $20k<input type="checkbox"  value=5> </label></a></li>
+				  </ul>
+			  </div>
+			  <div class="form-group dropdown mileage-driven-dropdown">
+			  	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Mileage
+				  <span class="caret"></span></button>
+				  <ul class="dropdown-menu">
+				    <li> <a href="#"><label>Up to 5K<input type="checkbox"  value=1> </label></a></li>
+				    <li class="divider"></li>
+				   	<li> <a href="#"><label>5k to 10k<input type="checkbox"  value=2> </label></a></li>
+				    <li class="divider"></li>
+				    <li> <a href="#"><label>10k to 15k<input type="checkbox"  value=3> </label></a></li>
+				    <li class="divider"></li>
+				    <li> <a href="#"><label>15k to 20K<input type="checkbox"  value=4> </label></a></li>
+				    <li class="divider"></li>
+				    <li> <a href="#"><label> 20K+<input type="checkbox"  value=5> </label></a></li>
+				  </ul>
+			  </div>
+			  
+			  <div class="form-group dropdown mileage-driven-dropdown">		  			  
+			  	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Make
+				  <span class="caret"></span></button>
+				  <ul class="dropdown-menu">
+				    <li> <a href="#"><label>BMW<input type="checkbox" value=1> </label></a></li>
+				    <li class="divider"></li>
+				   	<li> <a href="#"><label>Audi<input type="checkbox"  value=2> </label></a></li>
+				    <li class="divider"></li>
+				  </ul>
+			  </div>
+
+			   <div class="form-group dropdown model-dropdown">		  			  
+			  	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Model
+				  <span class="caret"></span></button>
+				  <ul class="dropdown-menu">
+				    <li> <a href="#"><label>A7<input type="checkbox"  value=1> </label></a></li>
+				    <li class="divider"></li>
+				   	<li> <a href="#"><label>Q5<input type="checkbox"  value=2> </label></a></li>
+				    <li class="divider"></li>
+				    <li> <a href="#"><label>S4<input type="checkbox"  value=3> </label></a></li>
+				    <li class="divider"></li>
+				  </ul>
+			  </div>
+
+			  <div class="form-group dropdown year-dropdown">		  			  
+			  	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Year
+				  <span class="caret"></span></button>
+				  <ul class="dropdown-menu">
+				    <li> <a href="#"><label>2018 And Newer<input type="checkbox"  value=1> </label></a></li>
+				    <li class="divider"></li>
+				   	<li> <a href="#"><label>2008-2018<input type="checkbox"  value=2> </label></a></li>
+				  </ul>
+			  </div>
+
+			  <div class="form-group dropdown bodytype-dropdown">		  			  
+			  	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Body Type
+				  <span class="caret"></span></button>
+				  <ul class="dropdown-menu">
+				    <li> <a href="#"><label>Sedan<input type="checkbox" value=1> </label></a></li>
+				    <li class="divider"></li>
+				   	<li> <a href="#"><label>SUV<input type="checkbox" value=2> </label></a></li>
+				    <li class="divider"></li>
+				    <li> <a href="#"><label>Convertable<input type="checkbox" value=3> </label></a></li>
+				    <li class="divider"></li>
+				  </ul>
+			  </div>
+
+
+			   <div class="form-group dropdown color-dropdown">		  			  
+			  	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Color
+				  <span class="caret"></span></button>
+				  <ul class="dropdown-menu">
+				    <li> <a href="#"><label>Blue<input type="checkbox" value=1> </label></a></li>
+				    <li class="divider"></li>
+				   	<li> <a href="#"><label>Red<input type="checkbox" value=2> 	</label></a></li>
+				   	<li class="divider"></li>
+				   	<li> <a href="#"><label>Black<input type="checkbox" value=3> </label></a></li>
+				   	<li class="divider"></li>
+				   	<li> <a href="#"><label>Black<input type="checkbox" value=4> </label></a></li>
+				   	<li class="divider"></li>
+				   	<li> <a href="#"><label>White<input type="checkbox" value=5> </label></a></li>
+				  </ul>
+			  </div>
+
+			  <div class="form-group dropdown transmission-dropdown">		  			  
+			  	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Transmission
+				  <span class="caret"></span></button>
+				  <ul class="dropdown-menu">
+				    <li> <a href="#"><label>Manual<input type="checkbox" value=1> </label></a></li>
+				    <li class="divider"></li>
+				   	<li> <a href="#"><label>Automatic<input type="checkbox" value=2> </label></a></li>
+				  </ul>
+			  </div>
+
+			  <button type="submit" title='Click to apply filters' class="btn btn-default">Apply Filters</button>
+		</form>
+	</div>
+</div>
+<div class="row filters-applied-wrapper"> <h4>Applied filters go here</h4></div>
+<br/>
+<div class="container-fluid filtered-results text-center"> 
+	<div class="row">
+	   <div class="col-sm-6 col-lg-3">
+	        <div class="card">
+	            <img class="card-img-top" src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif">
+	            <div class="card-block">
+	                <figure class="profile">
+	                    <img src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif" class="profile-avatar" alt="">
+	                </figure>
+	                <h4 class="card-title mt-3">Tawshif Ahsan Khan</h4>
+	                <div class="meta">
+	                    <a>Friends</a>
+	                </div>
+	                <div class="card-text">
+	                    Tawshif is a web designer living in Bangladesh.
+	                </div>
+	            </div>
+	            <div class="card-footer">
+	                <small>Last updated 3 mins ago</small>
+	                <button class="btn btn-secondary float-right btn-sm">show</button>
+	            </div>
+	        </div>
+	    </div>
+	   
+	   <div class="col-sm-6 col-lg-3">
+	        <div class="card">
+	            <img class="card-img-top" src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif">
+	            <div class="card-block">
+	                <figure class="profile">
+	                    <img src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif" class="profile-avatar" alt="">
+	                </figure>
+	                <h4 class="card-title mt-3">Tawshif Ahsan Khan</h4>
+	                <div class="meta">
+	                    <a>Friends</a>
+	                </div>
+	                <div class="card-text">
+	                    Tawshif is a web designer living in Bangladesh.
+	                </div>
+	            </div>
+	            <div class="card-footer">
+	                <small>Last updated 3 mins ago</small>
+	                <button class="btn btn-secondary float-right btn-sm">show</button>
+	            </div>
+	        </div>
+	    </div>
+	    <div class="col-sm-6 col-lg-3">
+	        <div class="card">
+	            <img class="card-img-top" src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif">
+	            <div class="card-block">
+	                <figure class="profile">
+	                    <img src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif" class="profile-avatar" alt="">
+	                </figure>
+	                <h4 class="card-title mt-3">Tawshif Ahsan Khan</h4>
+	                <div class="meta">
+	                    <a>Friends</a>
+	                </div>
+	                <div class="card-text">
+	                    Tawshif is a web designer living in Bangladesh.
+	                </div>
+	            </div>
+	            <div class="card-footer">
+	                <small>Last updated 3 mins ago</small>
+	                <button class="btn btn-secondary float-right btn-sm">show</button>
+	            </div>
+	        </div>
+	    </div>
+
+	    <div class="col-sm-6 col-lg-3">
+	        <div class="card">
+	            <img class="card-img-top" src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif">
+	            <div class="card-block">
+	                <figure class="profile">
+	                    <img src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif" class="profile-avatar" alt="">
+	                </figure>
+	                <h4 class="card-title mt-3">Tawshif Ahsan Khan</h4>
+	                <div class="meta">
+	                    <a>Friends</a>
+	                </div>
+	                <div class="card-text">
+	                    Tawshif is a web designer living in Bangladesh.
+	                </div>
+	            </div>
+	            <div class="card-footer">
+	                <small>Last updated 3 mins ago</small>
+	                <button class="btn btn-secondary float-right btn-sm">show</button>
+	            </div>
+	        </div>
+	    </div>
+
+   	</div>
+</div>
+
+</body>
+</html>

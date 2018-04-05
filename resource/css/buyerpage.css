@@ -1,0 +1,22 @@
+
+  .mandatory-filter-items-form input{
+    height: 50px;
+  }
+
+  .additional-filter-items .dropdown {
+    margin-left:2%;
+  }
+
+  .additional-filter-items-form {
+    margin-left: 19%;
+  }
+
+  .mandatory-filter-items-form {
+    margin-left: 30%;
+  }
+
+  .filters-applied-wrapper{
+      height: 38px;
+      background: blue;
+      margin-top: -1%;
+  }
