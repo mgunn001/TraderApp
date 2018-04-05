@@ -3,14 +3,14 @@ class Seller extends User{
 
 	private $type;
 	private $site;
-	private Address $address
+	private Address $address;
 	
 
    Public function __construct(Address $add,	$name, $email,$phone, $site,$sellerId)
 	{
 		 parent::__construct($name, $email,$phone,$sellerId);
-		 this->address = $add;
-		 this->site = $site;
+		 $this->address = $add;
+		 $this->site = $site;
 		  
 	}
 

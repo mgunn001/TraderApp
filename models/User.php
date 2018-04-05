@@ -10,10 +10,10 @@ class User
 
 	Public	function __construct($name, $email,$phone,$userID)
 	{
-		this->name = $name;
-		this->email = $email;
-		this->phone = $phone; 
-		this->userID = $userID;
+		$this->name = $name;
+		$this->email = $email;
+		$this->phone = $phone; 
+		$this->userID = $userID;
 	}
 	public function getName(){
 		return $this->name;

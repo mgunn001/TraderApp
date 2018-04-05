@@ -18,9 +18,6 @@
   <script src="./resource/scripts/sitescript.js"></script>
   <link rel="stylesheet" href="./resource/css/site.css">
    <link rel="stylesheet" href="./resource/css/buyerpage.css">
-  <style>
-
-  </style>
 </head>
 <body>
 
@@ -49,7 +46,9 @@
 
 <div class="container-fluid mandatory-filter-items-wrapper" >
     <div class="mandatory-filter-items well">
-    	<form class="form-inline mandatory-filter-items-form" action="#">
+    	<form class="form-inline mandatory-filter-items-form" action="dummy.php" method="post">
+    			<input type="hidden" name="mandatoryFilterSubmit" value="true"></input>
+
 			  <div class="form-group">
 			    <input type="text" class="form-control vehicle-type" placeholder="Vehicle Type" title="Enter Vehicle Type" name='vehicleType' id="vehicletype">
 			  </div>
@@ -66,45 +65,47 @@
 
 <div class="container-fluid additional-filter-items-wrapper additional-filter-items well" style="margin-top:-1%;">
 	<div class="additional-filter-items">
-		<form class="form-inline additional-filter-items-form" action="#">
+
+		<form class="form-inline additional-filter-items-form" name="additionalFilters"  action="dummy.php" method="post">
+			  <input type="hidden" name="additionalFilterSubmit" value="true"></input>
 			  <div class="form-group dropdown price-dropdown">
 				  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Price
 				  <span class="caret"></span></button>
 				  <ul class="dropdown-menu">
-				    <li> <a href="#"><label>Below $5K<input type="checkbox" value=1> </label></a></li>
+				    <li> <a href="#"><label>Below $5K<input type="checkbox"  name="price_checkedList[]" value=1> </label></a></li>
 				    <li class="divider"></li>
-				   	<li> <a href="#"><label>$5k to $10k<input type="checkbox" value=2> </label></a></li>
+				   	<li> <a href="#"><label>$5k to $10k<input type="checkbox" name="price_checkedList[]" value=2> </label></a></li>
 				    <li class="divider"></li>
-				    <li> <a href="#"><label>$10k to $15k<input type="checkbox" value=3> </label></a></li>
+				    <li> <a href="#"><label>$10k to $15k<input type="checkbox" name="price_checkedList[]" value=3> </label></a></li>
 				    <li class="divider"></li>
-				    <li> <a href="#"><label>$15k to $20<input type="checkbox" value=4> </label></a></li>
+				    <li> <a href="#"><label>$15k to $20<input type="checkbox" name="price_checkedList[]" value=4> </label></a></li>
 				    <li class="divider"></li>
-				    <li> <a href="#"><label>Above $20k<input type="checkbox"  value=5> </label></a></li>
+				    <li> <a href="#"><label>Above $20k<input type="checkbox"  name="price_checkedList[]" value=5> </label></a></li>
 				  </ul>
 			  </div>
 			  <div class="form-group dropdown mileage-driven-dropdown">
 			  	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Mileage
 				  <span class="caret"></span></button>
 				  <ul class="dropdown-menu">
-				    <li> <a href="#"><label>Up to 5K<input type="checkbox"  value=1> </label></a></li>
+				    <li> <a href="#"><label>Up to 5K<input type="checkbox" name="mileage_checkedList[]" value=1> </label></a></li>
 				    <li class="divider"></li>
-				   	<li> <a href="#"><label>5k to 10k<input type="checkbox"  value=2> </label></a></li>
+				   	<li> <a href="#"><label>5k to 10k<input type="checkbox" name="mileage_checkedList[]" value=2> </label></a></li>
 				    <li class="divider"></li>
-				    <li> <a href="#"><label>10k to 15k<input type="checkbox"  value=3> </label></a></li>
+				    <li> <a href="#"><label>10k to 15k<input type="checkbox" name="mileage_checkedList[]" value=3> </label></a></li>
 				    <li class="divider"></li>
-				    <li> <a href="#"><label>15k to 20K<input type="checkbox"  value=4> </label></a></li>
+				    <li> <a href="#"><label>15k to 20K<input type="checkbox" name="mileage_checkedList[]" value=4> </label></a></li>
 				    <li class="divider"></li>
-				    <li> <a href="#"><label> 20K+<input type="checkbox"  value=5> </label></a></li>
+				    <li> <a href="#"><label> 20K+<input type="checkbox" name="mileage_checkedList[]"  value=5> </label></a></li>
 				  </ul>
 			  </div>
 			  
-			  <div class="form-group dropdown mileage-driven-dropdown">		  			  
+			  <div class="form-group dropdown make-dropdown">		  			  
 			  	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Make
 				  <span class="caret"></span></button>
 				  <ul class="dropdown-menu">
-				    <li> <a href="#"><label>BMW<input type="checkbox" value=1> </label></a></li>
+				    <li> <a href="#"><label>BMW<input type="checkbox" name="make_checkedList[]" value=1> </label></a></li>
 				    <li class="divider"></li>
-				   	<li> <a href="#"><label>Audi<input type="checkbox"  value=2> </label></a></li>
+				   	<li> <a href="#"><label>Audi<input type="checkbox" name="make_checkedList[]" value=2> </label></a></li>
 				    <li class="divider"></li>
 				  </ul>
 			  </div>
@@ -113,11 +114,11 @@
 			  	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Model
 				  <span class="caret"></span></button>
 				  <ul class="dropdown-menu">
-				    <li> <a href="#"><label>A7<input type="checkbox"  value=1> </label></a></li>
+				    <li> <a href="#"><label>A7<input type="checkbox" name="model_checkedList[]" value=1> </label></a></li>
 				    <li class="divider"></li>
-				   	<li> <a href="#"><label>Q5<input type="checkbox"  value=2> </label></a></li>
+				   	<li> <a href="#"><label>Q5<input type="checkbox" name="model_checkedList[]" value=2> </label></a></li>
 				    <li class="divider"></li>
-				    <li> <a href="#"><label>S4<input type="checkbox"  value=3> </label></a></li>
+				    <li> <a href="#"><label>S4<input type="checkbox" name="model_checkedList[]" value=3> </label></a></li>
 				    <li class="divider"></li>
 				  </ul>
 			  </div>
@@ -126,9 +127,9 @@
 			  	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Year
 				  <span class="caret"></span></button>
 				  <ul class="dropdown-menu">
-				    <li> <a href="#"><label>2018 And Newer<input type="checkbox"  value=1> </label></a></li>
+				    <li> <a href="#"><label>2018 And Newer<input type="checkbox" name="year_checkedList[]" value=1> </label></a></li>
 				    <li class="divider"></li>
-				   	<li> <a href="#"><label>2008-2018<input type="checkbox"  value=2> </label></a></li>
+				   	<li> <a href="#"><label>2008-2018<input type="checkbox" name="year_checkedList[]" value=2> </label></a></li>
 				  </ul>
 			  </div>
 
@@ -136,11 +137,11 @@
 			  	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Body Type
 				  <span class="caret"></span></button>
 				  <ul class="dropdown-menu">
-				    <li> <a href="#"><label>Sedan<input type="checkbox" value=1> </label></a></li>
+				    <li> <a href="#"><label>Sedan<input type="checkbox" name="body_checkedList[]" value=1> </label></a></li>
 				    <li class="divider"></li>
-				   	<li> <a href="#"><label>SUV<input type="checkbox" value=2> </label></a></li>
+				   	<li> <a href="#"><label>SUV<input type="checkbox" name="body_checkedList[]" value=2> </label></a></li>
 				    <li class="divider"></li>
-				    <li> <a href="#"><label>Convertable<input type="checkbox" value=3> </label></a></li>
+				    <li> <a href="#"><label>Convertable<input type="checkbox" name="body_checkedList[]" value=3> </label></a></li>
 				    <li class="divider"></li>
 				  </ul>
 			  </div>
@@ -150,15 +151,15 @@
 			  	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Color
 				  <span class="caret"></span></button>
 				  <ul class="dropdown-menu">
-				    <li> <a href="#"><label>Blue<input type="checkbox" value=1> </label></a></li>
+				    <li> <a href="#"><label>Blue<input type="checkbox" name="color_checkedList[]" value=1> </label></a></li>
 				    <li class="divider"></li>
-				   	<li> <a href="#"><label>Red<input type="checkbox" value=2> 	</label></a></li>
+				   	<li> <a href="#"><label>Red<input type="checkbox" name="color_checkedList[]" value=2> 	</label></a></li>
 				   	<li class="divider"></li>
-				   	<li> <a href="#"><label>Black<input type="checkbox" value=3> </label></a></li>
+				   	<li> <a href="#"><label>Black<input type="checkbox" name="color_checkedList[]" value=3> </label></a></li>
 				   	<li class="divider"></li>
-				   	<li> <a href="#"><label>Black<input type="checkbox" value=4> </label></a></li>
+				   	<li> <a href="#"><label>Black<input type="checkbox" name="color_checkedList[]"  value=4> </label></a></li>
 				   	<li class="divider"></li>
-				   	<li> <a href="#"><label>White<input type="checkbox" value=5> </label></a></li>
+				   	<li> <a href="#"><label>White<input type="checkbox" name="color_checkedList[]" value=5> </label></a></li>
 				  </ul>
 			  </div>
 
@@ -166,9 +167,9 @@
 			  	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Transmission
 				  <span class="caret"></span></button>
 				  <ul class="dropdown-menu">
-				    <li> <a href="#"><label>Manual<input type="checkbox" value=1> </label></a></li>
+				    <li> <a href="#"><label>Manual<input type="checkbox" name="transmission_checkedList[]" value=1> </label></a></li>
 				    <li class="divider"></li>
-				   	<li> <a href="#"><label>Automatic<input type="checkbox" value=2> </label></a></li>
+				   	<li> <a href="#"><label>Automatic<input type="checkbox" name="transmission_checkedList[]" value=2> </label></a></li>
 				  </ul>
 			  </div>
 
@@ -176,93 +177,99 @@
 		</form>
 	</div>
 </div>
+
 <div class="row filters-applied-wrapper"> <h4>Applied filters go here</h4></div>
 <br/>
 <div class="container-fluid filtered-results text-center"> 
-	<div class="row">
+	<div class="row filtered-vehicles-wrapper">
 	   <div class="col-sm-6 col-lg-3">
-	        <div class="card">
+	        <div class="card" carid="1">
 	            <img class="card-img-top" src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif">
 	            <div class="card-block">
 	                <figure class="profile">
 	                    <img src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif" class="profile-avatar" alt="">
 	                </figure>
-	                <h4 class="card-title mt-3">Tawshif Ahsan Khan</h4>
-	                <div class="meta">
-	                    <a>Friends</a>
-	                </div>
+	                <h4 class="card-title mt-3"><span class="make">Hundai</span><span class="model">I20</span><span class="year">(2017)</span></h4>
 	                <div class="card-text">
-	                    Tawshif is a web designer living in Bangladesh.
+	                	<ul>
+	                		<li> <span class="price" style="font-weight: bold">$5000</span></li>
+	                		<li> <span class="fuel">Petrol</span><span class="divider">|</span><span class="mileage">3000 Miles</span><span class="divider">|</span><span class="noofowners">1 Owner</span></li>
+	                	</ul>
+	                 
 	                </div>
 	            </div>
 	            <div class="card-footer">
-	                <small>Last updated 3 mins ago</small>
-	                <button class="btn btn-secondary float-right btn-sm">show</button>
+	                <small>click to know more info and contact seller</small>
+	                <button class="btn btn-primary float-right btn-sm">Contact Seller</button>
 	            </div>
 	        </div>
 	    </div>
 	   
 	   <div class="col-sm-6 col-lg-3">
-	        <div class="card">
+	        <div class="card" carid="2">
 	            <img class="card-img-top" src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif">
 	            <div class="card-block">
 	                <figure class="profile">
 	                    <img src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif" class="profile-avatar" alt="">
 	                </figure>
-	                <h4 class="card-title mt-3">Tawshif Ahsan Khan</h4>
-	                <div class="meta">
-	                    <a>Friends</a>
-	                </div>
+	                <h4 class="card-title mt-3"><span class="make">Hundai</span><span class="model">I20</span><span class="year">(2017)</span></h4>
 	                <div class="card-text">
-	                    Tawshif is a web designer living in Bangladesh.
+	                	<ul>
+	                		<li> <span class="price" style="font-weight: bold">$5000</span></li>
+	                		<li> <span class="fuel">Petrol</span><span class="divider">|</span><span class="mileage">3000 Miles</span><span class="divider">|</span><span class="noofowners">1 Owner</span></li>
+	                	</ul>
+	                 
 	                </div>
 	            </div>
 	            <div class="card-footer">
-	                <small>Last updated 3 mins ago</small>
-	                <button class="btn btn-secondary float-right btn-sm">show</button>
-	            </div>
-	        </div>
-	    </div>
-	    <div class="col-sm-6 col-lg-3">
-	        <div class="card">
-	            <img class="card-img-top" src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif">
-	            <div class="card-block">
-	                <figure class="profile">
-	                    <img src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif" class="profile-avatar" alt="">
-	                </figure>
-	                <h4 class="card-title mt-3">Tawshif Ahsan Khan</h4>
-	                <div class="meta">
-	                    <a>Friends</a>
-	                </div>
-	                <div class="card-text">
-	                    Tawshif is a web designer living in Bangladesh.
-	                </div>
-	            </div>
-	            <div class="card-footer">
-	                <small>Last updated 3 mins ago</small>
-	                <button class="btn btn-secondary float-right btn-sm">show</button>
+	                <small>click to know more info and contact seller</small>
+	                <button class="btn btn-primary float-right btn-sm">Contact Seller</button>
 	            </div>
 	        </div>
 	    </div>
 
 	    <div class="col-sm-6 col-lg-3">
-	        <div class="card">
+	        <div class="card" carid="3">
 	            <img class="card-img-top" src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif">
 	            <div class="card-block">
 	                <figure class="profile">
 	                    <img src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif" class="profile-avatar" alt="">
 	                </figure>
-	                <h4 class="card-title mt-3">Tawshif Ahsan Khan</h4>
-	                <div class="meta">
-	                    <a>Friends</a>
-	                </div>
+	                <h4 class="card-title mt-3"><span class="make">Hundai</span><span class="model">I20</span><span class="year">(2017)</span></h4>
 	                <div class="card-text">
-	                    Tawshif is a web designer living in Bangladesh.
+	                	<ul>
+	                		<li> <span class="price" style="font-weight: bold">$5000</span></li>
+	                		<li> <span class="fuel">Petrol</span><span class="divider">|</span><span class="mileage">3000 Miles</span><span class="divider">|</span><span class="noofowners">1 Owner</span></li>
+	                	</ul>
+	                 
 	                </div>
 	            </div>
 	            <div class="card-footer">
-	                <small>Last updated 3 mins ago</small>
-	                <button class="btn btn-secondary float-right btn-sm">show</button>
+	                <small>click to know more info and contact seller</small>
+	                <button class="btn btn-primary float-right btn-sm">Contact Seller</button>
+	            </div>
+	        </div>
+	    </div>
+
+	    <div class="col-sm-6 col-lg-3">
+	        <div class="card" carid="4">
+	            <img class="card-img-top" src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif">
+	            <div class="card-block">
+	                <figure class="profile">
+	                    <img src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif" class="profile-avatar" alt="">
+	                </figure>
+	                <h4 class="card-title mt-3"><span class="make">Hundai</span><span class="model">I20</span><span class="year">(2017)</span></h4>
+	                <div class="card-text">
+	                	<ul>
+	                		<li> <span class="price" style="font-weight: bold">$5000</span></li>
+	                		<li> <span class="fuel">Petrol</span><span class="divider">|</span><span class="mileage">3000 Miles</span><span class="divider">|</span><span class="noofowners">1 Owner</span></li>
+	                	</ul>
+	                 
+	                </div>
+	            </div>
+	            <div class="card-footer">
+	                <small>click to know more info and contact seller</small>
+	                <button class="btn btn-primary float-right btn-sm">Contact Seller</button>
 	            </div>
 	        </div>
 	    </div>

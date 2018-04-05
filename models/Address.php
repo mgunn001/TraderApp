@@ -10,12 +10,12 @@ class Address
 	private	$zipCode;
 
 	public function __construct($addressID,$addLine1,$addLine2,$city,$state, $zipCode){
-		this->addressID = $addressID;
-		this->addLine1 = $addLine1;
-		this->addLine2 = $addLine2; 
-		this->city = $city;
-		this->state = $state;
-		this->zipCode = $zipCode;
+		$this->addressID = $addressID;
+		$this->addLine1 = $addLine1;
+		$this->addLine2 = $addLine2; 
+		$this->city = $city;
+		$this->state = $state;
+		$this->zipCode = $zipCode;
 	}
 	
 

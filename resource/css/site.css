@@ -25,7 +25,7 @@
   }
 
 
-  
+
 .card {
     font-size: 1em;
     overflow: hidden;
@@ -111,3 +111,11 @@
     vertical-align: top;
 }
 
+
+  .card span{
+    padding: 2px;
+  }
+
+  .card ul {
+    list-style-type: none;
+  }
