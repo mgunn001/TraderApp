@@ -49,12 +49,14 @@
         $search_service = new SearchService();
         $resultObj= $search_service->getASpecificVehicle($_GET['vehicleID']);
         $vehicle = $resultObj[0];
+                        // echo $vehicle->getId();
+                 $sellerId=$search_service->getSpecificSellerId($vehicle->getId());
         //echo var_dump($vehicle->getImages());
-        constructVehicleDetailsHTML($vehicle);
+        constructVehicleDetailsHTML($vehicle,$sellerId);
       }     
 
       // this method build the HTML content required for Carousel and stuff
-      function constructVehicleDetailsHTML($vehicle){
+      function constructVehicleDetailsHTML($vehicle,$sellerId){
         //echo var_dump($vehicle->getImages());
         //return;
         if($vehicle != null){
@@ -113,7 +115,7 @@
                       <ul>
                         <li> <h3><span class="price"> $'.$vehicle->getPrice().' </span></h3></li>
                         <li><span class="make">'.$vehicle->getMake().'</span> <span class="model">'.$vehicle->getModel().'</span> <span class="year">('.$vehicle->getYear().')</span></li>
-                        <li> <input type="button" class="btn btn-primary" value="Email Seller" sellerid="1"/></li>
+                        <li> <input type="button" class="btn btn-primary" value="Email Seller" sellerid="'.$sellerId.'"/></li>
                       </ul>
 
                     </div>
@@ -142,6 +144,25 @@
         }
       }
 
+      function constructSellerReviewsHTML($sellerCommentsObj)
+      {
+        // $sellerId=$search_service->getSpecificSellerId($vehicle->getId());
+        // $sellerCommentsObj= $search_service->getSellerComments($sellerId);
+        if($sellerCommentsObj != null){
+          $commentsHtmlContent='';
+          foreach ($sellerCommentsObj as $sellerComment) {
+          
+          
+          $commentsHtmlContent.='<div class="row review-by-buyer" reviewid="'.$sellerComment->getId().'"> 
+                <div class="col-lg-1"> <img src="https://s.gravatar.com/avatar/5a576a6969e99ea0652c734ca15c4cc5?s=80" class="img-responsive img-circle" alt="Cinque Terre"> </div> '.$sellerComment->getCommenterName().'<br>'.$sellerComment->getTimePosted().'
+                <div class="col-lg-11"><div class="reviewtext-container"> '.$sellerComment->getComment().'</div></div> 
+              </div>';
+          }
+        }
+        echo $commentsHtmlContent;
+
+      }
+
     ?>
 
 
@@ -155,10 +176,24 @@
           </div>
           <div id="collapse1" class="panel-collapse collapse">
             <div class="panel-body">
-              <div class="row review-by-buyer" reviewid="1"> 
+              <?php
+              if(isset($_GET['vehicleID'])){
+                //echo "Echoing details for vehicle with ID: -> ".$_GET['vehicleID'];
+                // $search_service = new SearchService();
+                // $resultObj= $search_service->getASpecificVehicle($_GET['vehicleID']);
+                // $vehicle = $resultObj[0];
+                //                 // echo $vehicle->getId();
+                         // $sellerId=$search_service->getSpecificSellerId($vehicle->getId());
+                //echo var_dump($vehicle->getImages());
+                $sellerCommentsObj= $search_service->getSellerComments($sellerId);
+                constructSellerReviewsHTML($sellerCommentsObj);
+              } 
+                
+              ?>
+              <!-- <div class="row review-by-buyer" reviewid="1"> 
                 <div class="col-lg-1"> <img src="https://s.gravatar.com/avatar/5a576a6969e99ea0652c734ca15c4cc5?s=80" class="img-responsive img-circle" alt="Cinque Terre"> </div> 
                 <div class="col-lg-11"><div class="reviewtext-container"> </div></div> 
-              </div>
+              </div> -->
             </div>
             <div class="panel-footer">
                <form class="form-inline" action="#"> 

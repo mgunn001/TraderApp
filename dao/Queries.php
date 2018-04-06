@@ -26,6 +26,18 @@
 	      $sql = 'SELECT * FROM `sellerDetails` where id='.$sellerId  ;
 	      return $sql;
 	    }
+	    public function getSellerId($vehicleId){
+	      $sql = 'SELECT * FROM `postedvehicles` where id='.$vehicleId  ;
+	      return $sql;
+	    }
+	    public function getSellerComments($sellerId){
+	      $sql = 'SELECT buyercomments.id,comment,timestamp,buyerdetails.buyerName FROM `buyercomments` join `buyerdetails` on buyercomments.buyerId=buyerdetails.id where sellerId='.$sellerId  ;
+	      return $sql;
+	    }
+	    public function writeSellerComment($sellerId,$buyerId,$comment){
+	      $sql = 'INSERT INTO `buyercomments` (`id`, `buyerId`, `sellerId`, `comment`, `timestamp`) VALUES (NULL, '.$buyerId.', '.$sellerId.', "'.$comment.'", "")'  ;
+	      return $sql;
+	    }
 
 	    
 	}

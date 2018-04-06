@@ -3,6 +3,7 @@
 	include_once dirname(__DIR__)."/dao/Queries.php";
 	include_once dirname(__DIR__)."/models/Vehicle.php";
 	include_once dirname(__DIR__)."/models/MetaData.php";
+	include_once dirname(__DIR__)."/models/SellerComment.php";
 
 	ini_set('display_startup_errors', 1);
 	ini_set('display_errors', 1);
@@ -65,7 +66,72 @@
 		  $conn->close();
 		  return $resultSet;
 		}
+		public function getSpecificSellerId($vehicleId)
+		{
+			 $database_connection = new DatabaseConnection();
+		  $conn = $database_connection->getConnection();
+		   $vehicleId=mysqli_real_escape_string($conn,$vehicleId);
+		  $queries = new Queries();
+		  $getSellerQuery = $queries->getSellerId($vehicleId);
+		  $sellerQueryResult = $conn->query($getSellerQuery);
+		  
+		  if ($sellerQueryResult->num_rows > 0) {
 
+		      while($eachRow = $sellerQueryResult->fetch_assoc()) {
+		      	return $eachRow['sellerId'];
+		      }
+		    }
+		    else
+		    {
+		    	return 'fail';
+		    }
+		    $conn->close();
+		}
+
+		public function getSellerComments($sellerId)
+		{
+			 $database_connection = new DatabaseConnection();
+		  $conn = $database_connection->getConnection();
+		   $sellerId=mysqli_real_escape_string($conn,$sellerId);
+		  $queries = new Queries();
+		  $getSellerCommentsQuery = $queries->getSellerComments($sellerId);
+		  $sellerCommentsQueryResult = $conn->query($getSellerCommentsQuery);
+		  
+		  if ($sellerCommentsQueryResult->num_rows > 0) {
+
+		      while($eachRow = $sellerCommentsQueryResult->fetch_assoc()) {
+		      	$comment = new SellerComment($eachRow['id'],$eachRow['comment'],$eachRow['timestamp'],$eachRow['buyerName']);
+				$resultSet[]= $comment;
+		      }
+		    }
+		    else
+		    {
+		    	return 'fail';
+		    }
+		    $conn->close();
+		    return $resultSet;
+		    
+		}
+		public function writeSellerComments($sellerId,$buyerId,$comment)
+		{
+			 $database_connection = new DatabaseConnection();
+		  $conn = $database_connection->getConnection();
+		   $sellerId=mysqli_real_escape_string($conn,$sellerId);
+		   $buyerId=mysqli_real_escape_string($conn,$buyerId);
+		   $comment=mysqli_real_escape_string($conn,$comment);
+		  $queries = new Queries();
+		  $writeSellerCommentQuery = $queries->writeSellerComment($sellerId,$buyerId,$comment);
+		  $sellerCommentQueryResult = $conn->query($writeSellerCommentQuery);
+		   if ($sellerCommentQueryResult === TRUE) {
+		        return 'comment created';
+		    } else {
+		        return 'fail';
+		    }
+		  
+		    $conn->close();
+		    // return $resultSet;
+		    
+		}
 
 		public function getASpecificVehicle($vehicleId)
 		{

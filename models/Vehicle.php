@@ -30,7 +30,13 @@ class Vehicle
 		 $this->metaData = $metaData;
 		 $this->images = $images;
 	}
+	public function getId(){
+		return $this->id;
+	}
 
+	public function setId($id){
+		$this->id = $id;
+	}
 	public function getYear(){
 		return $this->year;
 	}
