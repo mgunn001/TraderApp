@@ -26,6 +26,10 @@
 	      $sql = 'SELECT * FROM `sellerdetails` where id='.$sellerId  ;
 	      return $sql;
 	    }
+	     public function getBuyerDetails($buyerId){
+	      $sql = 'SELECT * FROM `buyerdetails` where id='.$buyerId  ;
+	      return $sql;
+	    }
 	    public function getSellerId($vehicleId){
 	      $sql = 'SELECT * FROM `postedvehicles` where id='.$vehicleId  ;
 	      return $sql;
