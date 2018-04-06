@@ -119,3 +119,16 @@
   .card ul, .vehicle-detail-outer-wrapper ul {
     list-style-type: none;
   }
+
+  .reviewtext-container{
+    height: 60px;
+    border: 0.5px solid blue;
+  }
+
+  .carousel-description-wrapper,.vehicle-entire-details-list{
+    border: 0.6px solid gray;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: inset 0px 0px 0px 0px rgba(0,0,0,.05);
+    padding: 2px;
+  }

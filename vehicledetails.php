@@ -47,7 +47,8 @@
 
     <div class="container-fluid vehicle-detail-outer-wrapper">
         <div class="row filtered-vehicles-wrapper">
-                <div class="carousel-container col-lg-7 col-lg-offset-1">                  
+                <div class="carousel-container col-lg-7 col-lg-offset-1">  
+                  <div class="carousel-description-wrapper">
                     <div id="myCarousel" class="carousel slide" data-ride="carousel">
                       <!-- Indicators -->
                       <ol class="carousel-indicators">
@@ -95,12 +96,13 @@
                       </a>
                     </div>
                     <div class="description-container">
-                     <h4>Description</h4>
+                     <h3>Description</h3>
                      <p> This is my color i love, hope to find some one to take care of my baby </p>
                     </div>
+                  </div>
                 </div>
                 <div class="col-lg-3">
-                    <div class=="row vehicle-main-details"> 
+                    <div class="row vehicle-main-details"> 
                       <ul>
                         <li> <span class="price">$50000</span></li>
                         <li><span class="make">Hundai</span> <span class="model">I20</span> <span class="year">(2018)</span></li>
@@ -108,7 +110,7 @@
                       </ul>
 
                     </div>
-                    <div class=="row vehicle-entire-details-list">
+                    <div class="row vehicle-entire-details-list">
                       <h3> Vehicle Details </h3>
                       <table class="table table-striped">
                         <tbody>
@@ -127,7 +129,7 @@
                 </div>
         </div>
     </div>
-
+    <br/>
     <div class="container seller-reviews-wrapper">
       <div class="panel-group">
         <div class="panel panel-default">
@@ -139,16 +141,16 @@
           <div id="collapse1" class="panel-collapse collapse">
             <div class="panel-body">
               <div class="row review-by-buyer" reviewid="1"> 
-                <div class="col-lg-2"> <img src="https://s.gravatar.com/avatar/5a576a6969e99ea0652c734ca15c4cc5?s=80" class="img-responsive img-circle" alt="Cinque Terre"> </div> 
-                <div class="col-lg-10"><div class="review-container"> </div></div> 
+                <div class="col-lg-1"> <img src="https://s.gravatar.com/avatar/5a576a6969e99ea0652c734ca15c4cc5?s=80" class="img-responsive img-circle" alt="Cinque Terre"> </div> 
+                <div class="col-lg-11"><div class="reviewtext-container"> </div></div> 
               </div>
             </div>
-            <div class="panel-footer"><textarea name="comment"></textarea>
+            <div class="panel-footer">
                <form class="form-inline" action="#"> 
-                <div class="form-group">
-                  <textarea name="comment"></textarea>
+                <div class="form-group" style="width:90%">         
+                  <textarea class="commenttext-topost-buyer" name="commenttexttopost" style="width:100%"></textarea>
                 </div>
-                <button type="submit" class="btn btn-default">Submit</button>
+                <button type="submit" class="btn btn-default commenttext-submitBtn">Submit</button>
               </form>
             </div>
           </div>
