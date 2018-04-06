@@ -11,7 +11,6 @@ class Seller extends User{
 		 parent::__construct($name, $email,$phone,$sellerId);
 		 $this->address = $add;
 		 $this->site = $site;
-		  
 	}
 
 	public function getType(){
