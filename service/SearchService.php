@@ -11,31 +11,33 @@
 	 // echo dirname(__DIR__);
 	class SearchService
 	{
-		public function getAllVehicles()
+
+		public function getVehiclesByMandateFilters($vehicleType,$zipCode,$miles)
 		{
 		  $resultSet = [];
 		  $database_connection = new DatabaseConnection();
 		  $conn = $database_connection->getConnection();
+
+		  // to to be done in a seperate method which accepts the raw request object and retuns after applying escape string
+		   $vehicleType=mysqli_real_escape_string($conn,$vehicleType);
+		   $zipCode=mysqli_real_escape_string($conn,$zipCode);
+		   $miles=mysqli_real_escape_string($conn,$miles);
+
 		  $queries = new Queries();
-		  $getVehiclesQuery = $queries->getAllVehiclesQuery();
+		  $getVehiclesQuery = $queries->getVehiclesByMandateFiltersQuery($vehicleTypeId);
 		  $vehiclesQueryResult = $conn->query($getVehiclesQuery);
 		  
 		  if ($vehiclesQueryResult->num_rows > 0) {
-
 		      while($eachRow = $vehiclesQueryResult->fetch_assoc()) {
 		            // $resultSet[]= $eachRow;
-
-
 		            $getVehicleMetaDataQuery = $queries->getVehicleMetaData($eachRow['id']);
 		            $vehicleMetaDataQueryResult = $conn->query($getVehicleMetaDataQuery);
 		            $metaDataList=[];
-		            if ($vehicleMetaDataQueryResult->num_rows > 0) {
-		            	
-					      while($metaDataEachRow = $vehicleMetaDataQueryResult->fetch_assoc()) {
-								$metaData = new MetaData($metaDataEachRow['property'],$metaDataEachRow['propertyValue']);
-								$metaDataList[]=$metaData;			            
-
-					      }
+		            if ($vehicleMetaDataQueryResult->num_rows > 0) {		            	
+				      while($metaDataEachRow = $vehicleMetaDataQueryResult->fetch_assoc()) {
+						$metaData = new MetaData($metaDataEachRow['property'],$metaDataEachRow['propertyValue']);
+						$metaDataList[]=$metaData;			            
+				      }
 					} else {
 					    return 'fail';
 					}
@@ -45,19 +47,30 @@
 		            $imagesList=[];
 		            if ($vehicleImagesQueryResult->num_rows > 0) {
 		            	
-					      while($imageEachRow = $vehicleImagesQueryResult->fetch_assoc()) {
-								$imagesList[]=$imageEachRow['Path'];			            
+				      while($imageEachRow = $vehicleImagesQueryResult->fetch_assoc()) {
+						$imagesList[]=$imageEachRow['Path'];			            
 
-					      }
+				      }
 					} else {
 					    return 'fail';
 					}
 
+
+
 					$vehicle = new Vehicle($eachRow['id'],$eachRow['year'],$eachRow['make'],$eachRow['model'],$eachRow['milesDriven'],$eachRow['price'],$eachRow['vehicleType'],$eachRow['description'],$metaDataList,$imagesList);
-					$resultSet[]= $vehicle;
 
 
 
+
+					// filterting the vehicles based on miles and zipcode, happening at serverside, If we use NoSQL like elastic searching in here, this can be done at the Database level it self.
+					if($zipCode != "" && $miles != ""){
+							if(){ // with in range
+
+							}
+					}else{
+						$resultSet[]= $vehicle; //though the Zip is given and Miles aren't given, all the vehicles are shown
+					}
+					
 		      }
 		  } else {
 
@@ -68,10 +81,8 @@
 		}
 
 
-
-
 		// this has to be modified that the same method is called for both Manatory and additional ones
-		public function getAllVehiclesByApplyingVilters()
+		public function getVehiclesByApplyingAllFilters()
 		{
 		   $resultSet = [];
 		  $database_connection = new DatabaseConnection();
@@ -128,9 +139,6 @@
 		}
 
 
-
-
-
 		public function getSpecificSellerId($vehicleId)
 		{
 			 $database_connection = new DatabaseConnection();
@@ -152,6 +160,29 @@
 		    }
 		    $conn->close();
 		}
+
+		public function getSpecificSellerZip($vehicleId)
+		{
+			 $database_connection = new DatabaseConnection();
+		  $conn = $database_connection->getConnection();
+		   $vehicleId=mysqli_real_escape_string($conn,$vehicleId);
+		  $queries = new Queries();
+		  $getSellerQuery = $queries->getSellerZip($vehicleId);
+		  $sellerQueryResult = $conn->query($getSellerQuery);
+		  
+		  if ($sellerQueryResult->num_rows > 0) {
+
+		      while($eachRow = $sellerQueryResult->fetch_assoc()) {
+		      	return $eachRow['sellerId'];
+		      }
+		    }
+		    else
+		    {
+		    	return 'fail';
+		    }
+		    $conn->close();
+		}
+
 
 		public function getSellerComments($sellerId)
 		{
@@ -175,8 +206,9 @@
 		    }
 		    $conn->close();
 		    return $resultSet;
-		    
 		}
+
+
 		public function writeSellerComments($sellerId,$buyerId,$comment)
 		{
 			 $database_connection = new DatabaseConnection();
@@ -197,6 +229,7 @@
 		    // return $resultSet;
 		    
 		}
+
 
 		public function getASpecificVehicle($vehicleId)
 		{

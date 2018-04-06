@@ -7,6 +7,11 @@
 	      return $sql;
 	    }
 
+	    public function getVehiclesByMandateFiltersQuery($vehicleTypeId){
+	     $sql = 'SELECT * FROM `postedvehicles` where vehicleType='.$vehicleTypeId;
+	      return $sql;
+	    }
+
 	    public function getASpecificVehicleQuery($vehicleId){
 	      $sql = 'SELECT * FROM `postedvehicles` where id='.$vehicleId  ;
 	      return $sql;
@@ -30,6 +35,14 @@
 	      $sql = 'SELECT * FROM `postedvehicles` where id='.$vehicleId  ;
 	      return $sql;
 	    }
+
+	     public function getSellerZip($vehicleId){
+	      $sql = "SELECT selleraddress.zipcode FROM `postedvehicles`,`postedvehicles`,`postedvehicles` where id=".$vehicleId  ;
+	      return $sql;
+	    }
+
+
+
 	    public function getSellerComments($sellerId){
 	      $sql = 'SELECT buyercomments.id,comment,timestamp,buyerdetails.buyerName FROM `buyercomments` join `buyerdetails` on buyercomments.buyerId=buyerdetails.id where sellerId='.$sellerId  ;
 	      return $sql;

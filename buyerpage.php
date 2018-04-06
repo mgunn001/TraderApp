@@ -61,120 +61,7 @@
     </div>
 </div>
 
-<div class="container-fluid additional-filter-items-wrapper additional-filter-items well" style="margin-top:-1%;">
-	<div class="additional-filter-items">
 
-		<form class="form-inline additional-filter-items-form" name="additionalFilters"  action="dummy.php" method="post">
-			  <input type="hidden" name="additionalFilterSubmit" value="true"></input>
-			  <div class="form-group dropdown price-dropdown">
-				  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Price
-				  <span class="caret"></span></button>
-				  <ul class="dropdown-menu">
-				    <li> <a href="#"><label>Below $5K<input type="checkbox"  name="price_checkedList[]" value=1> </label></a></li>
-				    <li class="divider"></li>
-				   	<li> <a href="#"><label>$5k to $10k<input type="checkbox" name="price_checkedList[]" value=2> </label></a></li>
-				    <li class="divider"></li>
-				    <li> <a href="#"><label>$10k to $15k<input type="checkbox" name="price_checkedList[]" value=3> </label></a></li>
-				    <li class="divider"></li>
-				    <li> <a href="#"><label>$15k to $20<input type="checkbox" name="price_checkedList[]" value=4> </label></a></li>
-				    <li class="divider"></li>
-				    <li> <a href="#"><label>Above $20k<input type="checkbox"  name="price_checkedList[]" value=5> </label></a></li>
-				  </ul>
-			  </div>
-			  <div class="form-group dropdown mileage-driven-dropdown">
-			  	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Mileage
-				  <span class="caret"></span></button>
-				  <ul class="dropdown-menu">
-				    <li> <a href="#"><label>Up to 5K<input type="checkbox" name="mileage_checkedList[]" value=1> </label></a></li>
-				    <li class="divider"></li>
-				   	<li> <a href="#"><label>5k to 10k<input type="checkbox" name="mileage_checkedList[]" value=2> </label></a></li>
-				    <li class="divider"></li>
-				    <li> <a href="#"><label>10k to 15k<input type="checkbox" name="mileage_checkedList[]" value=3> </label></a></li>
-				    <li class="divider"></li>
-				    <li> <a href="#"><label>15k to 20K<input type="checkbox" name="mileage_checkedList[]" value=4> </label></a></li>
-				    <li class="divider"></li>
-				    <li> <a href="#"><label> 20K+<input type="checkbox" name="mileage_checkedList[]"  value=5> </label></a></li>
-				  </ul>
-			  </div>
-			  
-			  <div class="form-group dropdown make-dropdown">		  			  
-			  	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Make
-				  <span class="caret"></span></button>
-				  <ul class="dropdown-menu">
-				    <li> <a href="#"><label>BMW<input type="checkbox" name="make_checkedList[]" value=1> </label></a></li>
-				    <li class="divider"></li>
-				   	<li> <a href="#"><label>Audi<input type="checkbox" name="make_checkedList[]" value=2> </label></a></li>
-				    <li class="divider"></li>
-				  </ul>
-			  </div>
-
-			   <div class="form-group dropdown model-dropdown">		  			  
-			  	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Model
-				  <span class="caret"></span></button>
-				  <ul class="dropdown-menu">
-				    <li> <a href="#"><label>A7<input type="checkbox" name="model_checkedList[]" value=1> </label></a></li>
-				    <li class="divider"></li>
-				   	<li> <a href="#"><label>Q5<input type="checkbox" name="model_checkedList[]" value=2> </label></a></li>
-				    <li class="divider"></li>
-				    <li> <a href="#"><label>S4<input type="checkbox" name="model_checkedList[]" value=3> </label></a></li>
-				    <li class="divider"></li>
-				  </ul>
-			  </div>
-
-			  <div class="form-group dropdown year-dropdown">		  			  
-			  	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Year
-				  <span class="caret"></span></button>
-				  <ul class="dropdown-menu">
-				    <li> <a href="#"><label>2018 And Newer<input type="checkbox" name="year_checkedList[]" value=1> </label></a></li>
-				    <li class="divider"></li>
-				   	<li> <a href="#"><label>2008-2018<input type="checkbox" name="year_checkedList[]" value=2> </label></a></li>
-				  </ul>
-			  </div>
-
-			  <div class="form-group dropdown bodytype-dropdown">		  			  
-			  	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Body Type
-				  <span class="caret"></span></button>
-				  <ul class="dropdown-menu">
-				    <li> <a href="#"><label>Sedan<input type="checkbox" name="body_checkedList[]" value=1> </label></a></li>
-				    <li class="divider"></li>
-				   	<li> <a href="#"><label>SUV<input type="checkbox" name="body_checkedList[]" value=2> </label></a></li>
-				    <li class="divider"></li>
-				    <li> <a href="#"><label>Convertable<input type="checkbox" name="body_checkedList[]" value=3> </label></a></li>
-				    <li class="divider"></li>
-				  </ul>
-			  </div>
-
-
-			   <div class="form-group dropdown color-dropdown">		  			  
-			  	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Color
-				  <span class="caret"></span></button>
-				  <ul class="dropdown-menu">
-				    <li> <a href="#"><label>Blue<input type="checkbox" name="color_checkedList[]" value=1> </label></a></li>
-				    <li class="divider"></li>
-				   	<li> <a href="#"><label>Red<input type="checkbox" name="color_checkedList[]" value=2> 	</label></a></li>
-				   	<li class="divider"></li>
-				   	<li> <a href="#"><label>Black<input type="checkbox" name="color_checkedList[]" value=3> </label></a></li>
-				   	<li class="divider"></li>
-				   	<li> <a href="#"><label>Black<input type="checkbox" name="color_checkedList[]"  value=4> </label></a></li>
-				   	<li class="divider"></li>
-				   	<li> <a href="#"><label>White<input type="checkbox" name="color_checkedList[]" value=5> </label></a></li>
-				  </ul>
-			  </div>
-
-			  <div class="form-group dropdown transmission-dropdown">		  			  
-			  	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Transmission
-				  <span class="caret"></span></button>
-				  <ul class="dropdown-menu">
-				    <li> <a href="#"><label>Manual<input type="checkbox" name="transmission_checkedList[]" value=1> </label></a></li>
-				    <li class="divider"></li>
-				   	<li> <a href="#"><label>Automatic<input type="checkbox" name="transmission_checkedList[]" value=2> </label></a></li>
-				  </ul>
-			  </div>
-
-			  <button type="submit" title='Click to apply filters' class="btn btn-default">Apply Filters</button>
-		</form>
-	</div>
-</div>
 
  <?php
       include_once "./service/SearchService.php";
@@ -186,24 +73,143 @@
         error_reporting(-1);
 
       if(isset($_POST['mandatoryFilterSubmit'])){
-        //echo "Echoing details for vehicle with ID: -> ".$_GET['vehicleID'];
+        //echo "Echoing details for vehicle with ID: -> ".$_POST['vehicleType'];
         $search_service = new SearchService();
         // this has to be modified by sending the params: Vehicle type, Zip and radius 
-        $resultObj= $search_service->getAllVehicles();
+        $resultObj= $search_service->getVehiclesByMandateFilters($_POST['vehicleType'],$_POST['zipCode'],$_POST['miles']);
         $vehiclesListing = $resultObj;
         //echo var_dump($vehiclesListing[0]);
 		//echo var_dump($vehiclesListing[0]->getMetaData());
-       constructFilteredVehicleListingHTML($vehiclesListing);
+		constructFiltersToDisplay();
+       	constructFilteredVehicleListingHTML($vehiclesListing);
       }     
 
 
-      function constructFilteredVehicleListingHTML($vehiclesListing){
 
+      // this method has to construct the suitable filters to be chosen by user according to the Type of vehicle selected, simply throwing out fixed filters for now.
+      function constructFiltersToDisplay(){
+      	echo '<div class="container-fluid additional-filter-items-wrapper additional-filter-items well" style="margin-top:-1%;">
+				<div class="additional-filter-items">
+					<form class="form-inline additional-filter-items-form" name="additionalFilters"  action="dummy.php" method="post">
+						  <input type="hidden" name="additionalFilterSubmit" value="true"></input>
+						  <div class="form-group dropdown price-dropdown">
+							  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Price
+							  <span class="caret"></span></button>
+							  <ul class="dropdown-menu">
+							    <li> <a href="#"><label>Below $5K<input type="checkbox"  name="price_checkedList[]" value=1> </label></a></li>
+							    <li class="divider"></li>
+							   	<li> <a href="#"><label>$5k to $10k<input type="checkbox" name="price_checkedList[]" value=2> </label></a></li>
+							    <li class="divider"></li>
+							    <li> <a href="#"><label>$10k to $15k<input type="checkbox" name="price_checkedList[]" value=3> </label></a></li>
+							    <li class="divider"></li>
+							    <li> <a href="#"><label>$15k to $20<input type="checkbox" name="price_checkedList[]" value=4> </label></a></li>
+							    <li class="divider"></li>
+							    <li> <a href="#"><label>Above $20k<input type="checkbox"  name="price_checkedList[]" value=5> </label></a></li>
+							  </ul>
+						  </div>
+						  <div class="form-group dropdown mileage-driven-dropdown">
+						  	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Mileage
+							  <span class="caret"></span></button>
+							  <ul class="dropdown-menu">
+							    <li> <a href="#"><label>Up to 5K<input type="checkbox" name="mileage_checkedList[]" value=1> </label></a></li>
+							    <li class="divider"></li>
+							   	<li> <a href="#"><label>5k to 10k<input type="checkbox" name="mileage_checkedList[]" value=2> </label></a></li>
+							    <li class="divider"></li>
+							    <li> <a href="#"><label>10k to 15k<input type="checkbox" name="mileage_checkedList[]" value=3> </label></a></li>
+							    <li class="divider"></li>
+							    <li> <a href="#"><label>15k to 20K<input type="checkbox" name="mileage_checkedList[]" value=4> </label></a></li>
+							    <li class="divider"></li>
+							    <li> <a href="#"><label> 20K+<input type="checkbox" name="mileage_checkedList[]"  value=5> </label></a></li>
+							  </ul>
+						  </div>
+						  
+						  <div class="form-group dropdown make-dropdown">		  			  
+						  	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Make
+							  <span class="caret"></span></button>
+							  <ul class="dropdown-menu">
+							    <li> <a href="#"><label>BMW<input type="checkbox" name="make_checkedList[]" value=1> </label></a></li>
+							    <li class="divider"></li>
+							   	<li> <a href="#"><label>Audi<input type="checkbox" name="make_checkedList[]" value=2> </label></a></li>
+							    <li class="divider"></li>
+							  </ul>
+						  </div>
+
+						   <div class="form-group dropdown model-dropdown">		  			  
+						  	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Model
+							  <span class="caret"></span></button>
+							  <ul class="dropdown-menu">
+							    <li> <a href="#"><label>A7<input type="checkbox" name="model_checkedList[]" value=1> </label></a></li>
+							    <li class="divider"></li>
+							   	<li> <a href="#"><label>Q5<input type="checkbox" name="model_checkedList[]" value=2> </label></a></li>
+							    <li class="divider"></li>
+							    <li> <a href="#"><label>S4<input type="checkbox" name="model_checkedList[]" value=3> </label></a></li>
+							    <li class="divider"></li>
+							  </ul>
+						  </div>
+
+						  <div class="form-group dropdown year-dropdown">		  			  
+						  	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Year
+							  <span class="caret"></span></button>
+							  <ul class="dropdown-menu">
+							    <li> <a href="#"><label>2018 And Newer<input type="checkbox" name="year_checkedList[]" value=1> </label></a></li>
+							    <li class="divider"></li>
+							   	<li> <a href="#"><label>2008-2018<input type="checkbox" name="year_checkedList[]" value=2> </label></a></li>
+							  </ul>
+						  </div>
+
+						  <div class="form-group dropdown bodytype-dropdown">		  			  
+						  	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Body Type
+							  <span class="caret"></span></button>
+							  <ul class="dropdown-menu">
+							    <li> <a href="#"><label>Sedan<input type="checkbox" name="body_checkedList[]" value=1> </label></a></li>
+							    <li class="divider"></li>
+							   	<li> <a href="#"><label>SUV<input type="checkbox" name="body_checkedList[]" value=2> </label></a></li>
+							    <li class="divider"></li>
+							    <li> <a href="#"><label>Convertable<input type="checkbox" name="body_checkedList[]" value=3> </label></a></li>
+							    <li class="divider"></li>
+							  </ul>
+						  </div>
+
+
+						   <div class="form-group dropdown color-dropdown">		  			  
+						  	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Color
+							  <span class="caret"></span></button>
+							  <ul class="dropdown-menu">
+							    <li> <a href="#"><label>Blue<input type="checkbox" name="color_checkedList[]" value=1> </label></a></li>
+							    <li class="divider"></li>
+							   	<li> <a href="#"><label>Red<input type="checkbox" name="color_checkedList[]" value=2> 	</label></a></li>
+							   	<li class="divider"></li>
+							   	<li> <a href="#"><label>Black<input type="checkbox" name="color_checkedList[]" value=3> </label></a></li>
+							   	<li class="divider"></li>
+							   	<li> <a href="#"><label>Black<input type="checkbox" name="color_checkedList[]"  value=4> </label></a></li>
+							   	<li class="divider"></li>
+							   	<li> <a href="#"><label>White<input type="checkbox" name="color_checkedList[]" value=5> </label></a></li>
+							  </ul>
+						  </div>
+
+						  <div class="form-group dropdown transmission-dropdown">		  			  
+						  	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Transmission
+							  <span class="caret"></span></button>
+							  <ul class="dropdown-menu">
+							    <li> <a href="#"><label>Manual<input type="checkbox" name="transmission_checkedList[]" value=1> </label></a></li>
+							    <li class="divider"></li>
+							   	<li> <a href="#"><label>Automatic<input type="checkbox" name="transmission_checkedList[]" value=2> </label></a></li>
+							  </ul>
+						  </div>
+
+						  <button type="submit" title="Click to apply filters" class="btn btn-default">Apply Filters</button>
+					</form>
+				</div>
+			</div>';
+      }
+
+      function constructFilteredVehicleListingHTML($vehiclesListing){
       	if(count($vehiclesListing) < 1){
       		echo "<h3> No Vehicles found </h3>";
       		return;
       	}
-      	
+      	$htmlContent ='';
+
       	$htmlContent .= '<div class="row filters-applied-wrapper"> <h4>Applied filters go here</h4></div><br/>';
       	$htmlContent .= '<div class="container-fluid filtered-results text-center"> 
 							<div class="row filtered-vehicles-wrapper">';
@@ -237,7 +243,6 @@
 
 	   		$htmlContent .='</div></div>';
 	   		echo $htmlContent;
-
      }
 
      // this method deals with fetching the imp props and value that are decided to be shown on the card
