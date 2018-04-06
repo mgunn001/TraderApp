@@ -3,6 +3,7 @@
 	include_once dirname(__DIR__)."/dao/Queries.php";
 	include_once dirname(__DIR__)."/models/Vehicle.php";
 	include_once dirname(__DIR__)."/models/MetaData.php";
+	include_once dirname(__DIR__)."/resource/php/class.phpmailer.php";
 
 	ini_set('display_startup_errors', 1);
 	ini_set('display_errors', 1);
@@ -23,26 +24,26 @@
 
 		      $mail->Username = 'studentrecruitment.csodu@gmail.com';
 		      $mail->Password = 'Srts@123';
-		      $mail->SMTPSecure= 'tls';
+		       $mail->SMTPSecure= 'tls';
 
 
-		      $mail->setFrom("studentrecruitment.csodu@gmail.com","IBHER");
-		      $mail->AddAddress($email);     // Add a recipient
+		      $mail->setFrom("studentrecruitment.csodu@gmail.com","Trader");
+		      $mail->AddAddress("mgunn001@odu.edu");     // Add a recipient
 		      $mail->isHTML(true);                                  // Set email format to HTML                 // Set email format to HTML
 
-		      $mail->Subject = 'Forgot Password';
-		      $tempPassword = $this->generateTempPassword();
-		      $database_connection = new DatabaseConnection();
-		      $conn = $database_connection->getConnection();
-		      $sql_service = new CommonSql();
-		      $insertPasswordQuery = $sql_service->updateTempPassword($email,$tempPassword);
-		      $conn -> query($insertPasswordQuery);
-		      echo "Password updated "+$tempPassword+" for "+$email;
-		      $conn->close();
-		      $mail->Body    =" Hello $firstName $lastName,
+		      $mail->Subject = 'New buyer for the car open for selling';
+		      // $tempPassword = $this->generateTempPassword();
+		      // $database_connection = new DatabaseConnection();
+		      // $conn = $database_connection->getConnection();
+		      // $sql_service = new CommonSql();
+		      // $insertPasswordQuery = $sql_service->updateTempPassword($email,$tempPassword);
+		      // $conn -> query($insertPasswordQuery);
+		      // echo "Password updated "+$tempPassword+" for "+$email;
+		      // $conn->close();
+		      $mail->Body    =" Hello ,
 		                        <br /><br /><br />
-		                        Username: $email,<br />
-		                        Password: $tempPassword.<br /><br />
+		                        Username: ,<br />
+		                        Password: .<br /><br />
 
 		                        You can change the password once you <a href ='https://ibhert.org'>login</a>.
 
@@ -52,13 +53,15 @@
 		                        IBHER Team.";
 
 		      $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-
+ 
 		      if(!$mail->Send()){
+
 		        return false;
 		      }else{
+		      	echo "Sending email";
 		        return true;
 		      }
-		      echo "Sending email";
+		      // echo "Sending email";
 		}
 	}
 ?>
