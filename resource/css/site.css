@@ -142,3 +142,7 @@
 .vehicle-entire-details-list .attribute{
   font-weight: bold;
 }
+
+.filtered-results .card img{
+  height: 285px;
+}

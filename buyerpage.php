@@ -44,7 +44,7 @@
 
 <div class="container-fluid mandatory-filter-items-wrapper" >
     <div class="mandatory-filter-items well">
-    	<form class="form-inline mandatory-filter-items-form" action="dummy.php" method="post">
+    	<form class="form-inline mandatory-filter-items-form" action="buyerpage.php" method="post">
     			<input type="hidden" name="mandatoryFilterSubmit" value="true"></input>
 
 			  <div class="form-group">
@@ -176,104 +176,83 @@
 	</div>
 </div>
 
-<div class="row filters-applied-wrapper"> <h4>Applied filters go here</h4></div>
-<br/>
-<div class="container-fluid filtered-results text-center"> 
-	<div class="row filtered-vehicles-wrapper">
-	   <div class="col-sm-6 col-lg-3">
-	        <div class="card" carid="1">
-	            <img class="card-img-top" src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif">
-	            <div class="card-block">
-	                <figure class="profile">
-	                    <img src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif" class="profile-avatar" alt="">
-	                </figure>
-	                <h4 class="card-title mt-3"><a href="./vehicledetails.php?vehicleID=1"><span class="make">Hundai</span><span class="model">I20</span><span class="year">(2017)</span></a></h4>
-	                <div class="card-text">
-	                	<ul>
-	                		<li> <span class="price" style="font-weight: bold">$5000</span></li>
-	                		<li> <span class="fuel">Petrol</span><span class="divider">|</span><span class="mileage">3000 Miles</span><span class="divider">|</span><span class="noofowners">1 Owner</span></li>
-	                	</ul>
-	                 
-	                </div>
-	            </div>
-	            <div class="card-footer">
-	                <small>click to know more info and contact seller</small>
-	                <button class="btn btn-primary float-right btn-sm">Contact Seller</button>
-	            </div>
-	        </div>
-	    </div>
-	   
-	   <div class="col-sm-6 col-lg-3">
-	        <div class="card" carid="2">
-	            <img class="card-img-top" src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif">
-	            <div class="card-block">
-	                <figure class="profile">
-	                    <img src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif" class="profile-avatar" alt="">
-	                </figure>
-	                <h4 class="card-title mt-3"><span class="make">Hundai</span><span class="model">I20</span><span class="year">(2017)</span></h4>
-	                <div class="card-text">
-	                	<ul>
-	                		<li> <span class="price" style="font-weight: bold">$5000</span></li>
-	                		<li> <span class="fuel">Petrol</span><span class="divider">|</span><span class="mileage">3000 Miles</span><span class="divider">|</span><span class="noofowners">1 Owner</span></li>
-	                	</ul>
-	                 
-	                </div>
-	            </div>
-	            <div class="card-footer">
-	                <small>click to know more info and contact seller</small>
-	                <button class="btn btn-primary float-right btn-sm">More Info</button>
-	            </div>
-	        </div>
-	    </div>
+ <?php
+      include_once "./service/SearchService.php";
+      include_once "./models/Vehicle.php";
+      include_once "./models/MetaData.php";
 
-	    <div class="col-sm-6 col-lg-3">
-	        <div class="card" carid="3">
-	            <img class="card-img-top" src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif">
-	            <div class="card-block">
-	                <figure class="profile">
-	                    <img src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif" class="profile-avatar" alt="">
-	                </figure>
-	                <h4 class="card-title mt-3"><span class="make">Hundai</span><span class="model">I20</span><span class="year">(2017)</span></h4>
-	                <div class="card-text">
-	                	<ul>
-	                		<li> <span class="price" style="font-weight: bold">$5000</span></li>
-	                		<li> <span class="fuel">Petrol</span><span class="divider">|</span><span class="mileage">3000 Miles</span><span class="divider">|</span><span class="noofowners">1 Owner</span></li>
-	                	</ul>
-	                 
-	                </div>
-	            </div>
-	            <div class="card-footer">
-	                <small>click to know more info and contact seller</small>
-	                <button class="btn btn-primary float-right btn-sm">Contact Seller</button>
-	            </div>
-	        </div>
-	    </div>
+        ini_set('display_startup_errors', 1);
+        ini_set('display_errors', 1);
+        error_reporting(-1);
 
-	    <div class="col-sm-6 col-lg-3">
-	        <div class="card" carid="4">
-	            <img class="card-img-top" src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif">
-	            <div class="card-block">
-	                <figure class="profile">
-	                    <img src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif" class="profile-avatar" alt="">
-	                </figure>
-	                <h4 class="card-title mt-3"><span class="make">Hundai</span><span class="model">I20</span><span class="year">(2017)</span></h4>
-	                <div class="card-text">
-	                	<ul>
-	                		<li> <span class="price" style="font-weight: bold">$5000</span></li>
-	                		<li> <span class="fuel">Petrol</span><span class="divider">|</span><span class="mileage">3000 Miles</span><span class="divider">|</span><span class="noofowners">1 Owner</span></li>
-	                	</ul>
-	                 
-	                </div>
-	            </div>
-	            <div class="card-footer">
-	                <small>click to know more info and contact seller</small>
-	                <button class="btn btn-primary float-right btn-sm">Contact Seller</button>
-	            </div>
-	        </div>
-	    </div>
+      if(isset($_POST['mandatoryFilterSubmit'])){
+        //echo "Echoing details for vehicle with ID: -> ".$_GET['vehicleID'];
+        $search_service = new SearchService();
+        // this has to be modified by sending the params: Vehicle type, Zip and radius 
+        $resultObj= $search_service->getAllVehicles();
+        $vehiclesListing = $resultObj;
+        //echo var_dump($vehiclesListing[0]);
+		//echo var_dump($vehiclesListing[0]->getMetaData());
+       constructFilteredVehicleListingHTML($vehiclesListing);
+      }     
 
-   	</div>
-</div>
+
+      function constructFilteredVehicleListingHTML($vehiclesListing){
+
+      	if(count($vehiclesListing) < 1){
+      		echo "<h3> No Vehicles found </h3>";
+      		return;
+      	}
+      	
+      	$htmlContent .= '<div class="row filters-applied-wrapper"> <h4>Applied filters go here</h4></div><br/>';
+      	$htmlContent .= '<div class="container-fluid filtered-results text-center"> 
+							<div class="row filtered-vehicles-wrapper">';
+
+			foreach ($vehiclesListing as $vehicle){
+	            $htmlContent .= '<div class="col-sm-6 col-lg-3">
+		        <div class="card" carid="'.$vehicle->getId().'">';
+		        $firstImgSrc = $vehicle->getImages()[0];
+		        if( $firstImgSrc == null){
+		        	$firstImgSrc = 'http://sifatit.com/wp-content/uploads/2012/07/dummy.jpg';
+		        }
+		        $htmlContent .= '<img class="card-img-top" src="'. $firstImgSrc.'">';
+	         	$htmlContent .= '<div class="card-block">
+		                <h4 class="card-title mt-3"><a href="./vehicledetails.php?vehicleID='.$vehicle->getId().'"><span class="make">'.$vehicle->getMake().'</span><span class="model">'.$vehicle->getModel().'</span><span class="year">('.$vehicle->getYear().')</span></a></h4>';
+		         $propsToShowOnCard=['owners','fuel'];
+
+		        $htmlContent .='<div class="card-text">
+		                	<ul>
+		                		<li> <span class="price" style="font-weight: bold">$'.$vehicle->getPrice().'</span></li>
+		                		<li> <span class="mileage">'.$vehicle->getMilesDriven() .'Miles</span>'.getSpecificAttributeFromMetaData($vehicle->getMetaData(),$propsToShowOnCard) .'</li>
+		                	</ul>
+		                	</div>
+							</div>
+							            <div class="card-footer">
+							                <small>click to know more info and contact seller</small>
+							                <button class="btn btn-primary float-right btn-sm">Contact Seller</button>
+							            </div>
+							        </div>
+							    </div>';
+	       }
+
+	   		$htmlContent .='</div></div>';
+	   		echo $htmlContent;
+
+     }
+
+     // this method deals with fetching the imp props and value that are decided to be shown on the card
+     function getSpecificAttributeFromMetaData($metaDataList, $propList){
+     		$htmlPropSpanToReturn = '';
+     		foreach ($metaDataList as $metaData){
+     			if(in_array(strtolower($metaData -> getProperty()) , $propList)){
+     				$htmlPropSpanToReturn.= '<span class="divider">|</span><span class="'.$metaData -> getProperty().'">'.$metaData -> getProperty().':&nbsp;'.$metaData -> getPropertyValue().'</span>';
+     			}
+     		}
+     		return $htmlPropSpanToReturn;
+     }
+
+
+  ?>
 
 </body>
 </html>

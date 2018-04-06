@@ -44,6 +44,10 @@
       include_once "./models/Vehicle.php";
       include_once "./models/MetaData.php";
 
+        ini_set('display_startup_errors', 1);
+        ini_set('display_errors', 1);
+        error_reporting(-1);
+
       if(isset($_GET['vehicleID'])){
         //echo "Echoing details for vehicle with ID: -> ".$_GET['vehicleID'];
         $search_service = new SearchService();
