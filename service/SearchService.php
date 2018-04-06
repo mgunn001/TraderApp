@@ -142,7 +142,7 @@
 		  $queries = new Queries();
 		  $getVehicleQuery = $queries->getASpecificVehicleQuery($vehicleId);
 		  $vehicleQueryResult = $conn->query($getVehicleQuery);
-		  
+		  // echo $getVehicleQuery;
 		  if ($vehicleQueryResult->num_rows > 0) {
 
 		      while($eachRow = $vehicleQueryResult->fetch_assoc()) {
