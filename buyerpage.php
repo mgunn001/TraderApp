@@ -45,10 +45,18 @@
 <div class="container-fluid mandatory-filter-items-wrapper" >
     <div class="mandatory-filter-items well">
     	<form class="form-inline mandatory-filter-items-form" action="buyerpage.php" method="post">
-    			<input type="hidden" name="mandatoryFilterSubmit" value="true"></input>
+    		  <input type="hidden" name="mandatoryFilterSubmit" value="true"></input>
+
+    		 <div class="form-group">
+			  <select class="form-control" class="vehicleType">
+				    <option value="1">Motar Cycle</option>
+				    <option value="2">Car</option>
+				    <option value="3">RV</option>
+				</select>
+			  </div>
 
 			  <div class="form-group">
-			    <input type="text" class="form-control vehicle-type" placeholder="Vehicle Type" title="Enter Vehicle Type" name='vehicleType' id="vehicletype">
+			    <input type="text" class="form-control vehicle-type" placeholder="Keyword" title="Enter Vehicle Type" name='keyword' id="keywordIP">
 			  </div>
 			  <div class="form-group">		  
 			    <input type="text" class="form-control zip-code" placeholder="Zip Code" title="Enter Zip Code" name='zipCode' id="zipcode">
@@ -235,7 +243,7 @@
 							</div>
 							            <div class="card-footer">
 							                <small>click to know more info and contact seller</small>
-							                <button class="btn btn-primary float-right btn-sm">Contact Seller</button>
+							                <button class="btn btn-primary float-right btn-sm">More Info</button>
 							            </div>
 							        </div>
 							    </div>';

@@ -19,12 +19,15 @@
 		  $conn = $database_connection->getConnection();
 
 		  // to to be done in a seperate method which accepts the raw request object and retuns after applying escape string
-		   $vehicleType=mysqli_real_escape_string($conn,$vehicleType);
+		   $vehicleTypeId=mysqli_real_escape_string($conn,$vehicleType);
 		   $zipCode=mysqli_real_escape_string($conn,$zipCode);
 		   $miles=mysqli_real_escape_string($conn,$miles);
 
 		  $queries = new Queries();
-		  $getVehiclesQuery = $queries->getVehiclesByMandateFiltersQuery($vehicleTypeId);
+		 // $getVehiclesQuery = $queries->getVehiclesByMandateFiltersQuery($vehicleTypeId);
+		  $getVehiclesQuery = $queries->getAllVehiclesQuery();
+		 //echo $getVehiclesQuery;
+
 		  $vehiclesQueryResult = $conn->query($getVehiclesQuery);
 		  
 		  if ($vehiclesQueryResult->num_rows > 0) {
@@ -60,16 +63,16 @@
 					$vehicle = new Vehicle($eachRow['id'],$eachRow['year'],$eachRow['make'],$eachRow['model'],$eachRow['milesDriven'],$eachRow['price'],$eachRow['vehicleType'],$eachRow['description'],$metaDataList,$imagesList);
 
 
+					// filterting the vehicles based on miles and zipcode, happening at serverside, If we use NoSQL like elasticsearch in here, this can be done at the Database level it self.
+					// if($zipCode != "" && $miles != ""){
+					// 	// if(){ // with in range
 
+					// 	// }
+					// }else{
+					// 	$resultSet[]= $vehicle; //though the Zip is given and Miles aren't given, all the vehicles are shown
+					// }
 
-					// filterting the vehicles based on miles and zipcode, happening at serverside, If we use NoSQL like elastic searching in here, this can be done at the Database level it self.
-					if($zipCode != "" && $miles != ""){
-							if(){ // with in range
-
-							}
-					}else{
-						$resultSet[]= $vehicle; //though the Zip is given and Miles aren't given, all the vehicles are shown
-					}
+					$resultSet[]= $vehicle; 
 					
 		      }
 		  } else {
@@ -79,6 +82,7 @@
 		  $conn->close();
 		  return $resultSet;
 		}
+
 
 
 		// this has to be modified that the same method is called for both Manatory and additional ones
