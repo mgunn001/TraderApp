@@ -10,8 +10,9 @@
 	 // echo dirname(__DIR__);
 	class SearchService
 	{
-		public function getAllVehiclesQuery()
+		public function getAllVehicles()
 		{
+		   $resultSet = [];
 		  $database_connection = new DatabaseConnection();
 		  $conn = $database_connection->getConnection();
 		  $queries = new Queries();
@@ -58,10 +59,67 @@
 
 		      }
 		  } else {
+
 		      return 'fail';
 		  }
 		  $conn->close();
-		  return var_dump($resultSet);
+		  return $resultSet;
 		}
+
+
+		public function getASpecificVehicle($vehicleId)
+		{
+		  $resultSet = [];
+		  $database_connection = new DatabaseConnection();
+		  $conn = $database_connection->getConnection();
+		   $vehicleId=mysqli_real_escape_string($conn,$vehicleId);
+		  $queries = new Queries();
+		  $getVehicleQuery = $queries->getASpecificVehicleQuery($vehicleId);
+		  $vehicleQueryResult = $conn->query($getVehicleQuery);
+		  
+		  if ($vehicleQueryResult->num_rows > 0) {
+
+		      while($eachRow = $vehicleQueryResult->fetch_assoc()) {
+		            // $resultSet[]= $eachRow;
+
+
+		            $getVehicleMetaDataQuery = $queries->getVehicleMetaData($eachRow['id']);
+		            $vehicleMetaDataQueryResult = $conn->query($getVehicleMetaDataQuery);
+		            $metaDataList=[];
+		            if ($vehicleMetaDataQueryResult->num_rows > 0) {
+		            	
+					      while($metaDataEachRow = $vehicleMetaDataQueryResult->fetch_assoc()) {
+								$metaData = new MetaData($metaDataEachRow['property'],$metaDataEachRow['propertyValue']);
+								$metaDataList[]=$metaData;			            
+
+					      }
+					} else {
+					    return 'fail';
+					}
+
+					$getVehicleImagesQuery = $queries->getVehicleImages($eachRow['id']);
+		            $vehicleImagesQueryResult = $conn->query($getVehicleImagesQuery);
+		            $imagesList=[];
+		            if ($vehicleImagesQueryResult->num_rows > 0) {
+		            	
+					      while($imageEachRow = $vehicleImagesQueryResult->fetch_assoc()) {
+								$imagesList[]=$imageEachRow['Path'];			            
+
+					      }
+					} else {
+					    return 'fail';
+					}
+
+					$vehicle = new Vehicle($eachRow['id'],$eachRow['year'],$eachRow['make'],$eachRow['model'],$eachRow['milesDriven'],$eachRow['price'],$eachRow['vehicleType'],$eachRow['description'],$metaDataList,$imagesList);
+					$resultSet[]= $vehicle;
+
+		      }
+		  } else {
+		      return 'fail';
+		  }
+		  $conn->close();
+		  return $resultSet;
+		}
+
 	}
 ?>

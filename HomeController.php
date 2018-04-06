@@ -2,8 +2,10 @@
   include_once "./service/SearchService.php";
 
   $search_service = new SearchService();
-  $conn = $search_service->getAllVehiclesQuery();
-  echo $conn;
+  //$resultObj= $search_service->getAllVehicles();
+  $resultObj= $search_service->getASpecificVehicle("1");
+
+  echo $resultObj;
 
   echo 'Helloo From Home Controller';
 ?>

@@ -29,7 +29,6 @@ class Vehicle
 		 $this->description = $description;
 		 $this->metaData = $metaData;
 		 $this->images = $images;
-		  
 	}
 
 	public function getYear(){
