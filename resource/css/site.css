@@ -137,3 +137,8 @@
     width: 100%;
     height: 450px;
   }
+
+
+.vehicle-entire-details-list .attribute{
+  font-weight: bold;
+}

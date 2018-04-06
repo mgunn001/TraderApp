@@ -111,7 +111,7 @@
                 $htmlContent .=' <div class="col-lg-3">
                     <div class="row vehicle-main-details"> 
                       <ul>
-                        <li> <span class="price"> $'.$vehicle->getPrice().' </span></li>
+                        <li> <h3><span class="price"> $'.$vehicle->getPrice().' </span></h3></li>
                         <li><span class="make">'.$vehicle->getMake().'</span> <span class="model">'.$vehicle->getModel().'</span> <span class="year">('.$vehicle->getYear().')</span></li>
                         <li> <input type="button" class="btn btn-primary" value="Email Seller" sellerid="1"/></li>
                       </ul>
