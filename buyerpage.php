@@ -14,6 +14,8 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
   <script src="./resource/scripts/sitescript.js"></script>
+  <script src="./resource/scripts/buyerscript.js"></script>
+
   <link rel="stylesheet" href="./resource/css/site.css">
    <link rel="stylesheet" href="./resource/css/buyerpage.css">
 </head>
