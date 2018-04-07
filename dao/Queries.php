@@ -55,6 +55,13 @@
 	      $sql = 'INSERT INTO `buyercomments` (`id`, `buyerId`, `sellerId`, `comment`) VALUES (NULL, '.$buyerId.', '.$sellerId.', "'.$comment.'")'  ;
 	      return $sql;
 	    }
+
+	     public function getKeywordsOnVehicleType($keywordIp,$vehicleTypeId){
+	     	 $sql = 'SELECT * FROM `helpertags` where LOWER(keyword) like "%'.strtolower($keywordIp).'%" and vehicletypeid='.$vehicleTypeId;
+	      	return $sql;
+	     }
+
+
 // SELECT * FROM `postedvehicles` where price between 1000 and 10000 and make IN ('Honda') and year IN ('2010') and model IN ('Accord EX-L') and milesDriven BETWEEN 1000 and 100000 
 	    
 	}

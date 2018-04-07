@@ -187,6 +187,8 @@
 		    $conn->close();
 		}
 
+
+
 		public function getSpecificSellerZip($vehicleId)
 		{
 			 $database_connection = new DatabaseConnection();
@@ -207,6 +209,30 @@
 		    }
 		    $conn->close();
 		}
+
+
+		public function getKeywordsByVehicleType($keywordIp,$vehicleTypeId){
+		  $database_connection = new DatabaseConnection();
+		  $conn = $database_connection->getConnection();
+		  $vehicleTypeId= mysqli_real_escape_string($conn,$vehicleTypeId);
+		  $keywordIp= mysqli_real_escape_string($conn,$keywordIp);
+		  $queries = new Queries();
+
+		  $getKeywordsQuery = $queries->getKeywordsOnVehicleType($keywordIp,$vehicleTypeId);
+		 // echo  $getKeywordsQuery;
+		  $keywordsQueryResult = $conn->query($getKeywordsQuery);
+		  $resultSet =[];
+		    if ($keywordsQueryResult->num_rows > 0) {
+		      while($eachRow = $keywordsQueryResult->fetch_assoc()) {
+		      	$resultSet[] = $eachRow['keyword'];
+		      }
+		    }  
+		    $conn->close();
+		    return  $resultSet;
+
+		}
+
+
 
 
 		public function getSellerComments($sellerId)
@@ -234,6 +260,8 @@
 		}
 
 
+
+
 		public function writeSellerComments($sellerId,$buyerId,$comment)
 		{
 		  $database_connection = new DatabaseConnection();
@@ -255,6 +283,9 @@
 		    // return $resultSet;
 		    
 		}
+
+
+
 
 
 		public function getASpecificVehicle($vehicleId)

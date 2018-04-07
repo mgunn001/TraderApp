@@ -104,36 +104,37 @@ function start()
 	    		for(var j=0;j<modelArry.length;j++){
 		    		modelTypeCheckBoxListHTML += '<li> <a href="#"><label>'+modelArry[j]+'<input type="checkbox" name="body_checkedList[]" relmake="'+ curMake+'" value="'+modelArry[j]+'"> </label></a></li>';
 		    	}
-		    	modelTypeCheckBoxListHTML +='<li class="divider"></li>'
-
+		    	modelTypeCheckBoxListHTML +='<li class="divider"></li>';
 			}
-
-			
 	    	$(".model-dropdown .dropdown-menu").html(modelTypeCheckBoxListHTML);
 
 		});
 
 
 
-//suggestions
+	//suggestions
 		$('input.keyword-identifier-vehicle').keyup(function(){
-
 			$(".resSuggDiv").remove();
 			var inputStr = $(this).val().trim();
+			if(inputStr.length <2){
+				return;
+			}
 			var searchInput=$(this);
-			// var inputData='{"inputString":"'+inputStr+'","workspaceid":"'+workspaceid+'"}';
-            $("#wholebody_loader").show();
-            // $.post('./Controller.php',{"getWorkspaceUsersByInput":inputData},function (data){
-                $("#wholebody_loader").hide();
-                var data='[{"id":1,"name":"dumm"},{"id":2,"name":"dumm2"},{"id":3,"name":"dumm3"},{"id":4,"name":"dumm4"},{"id":5,"name":"dumm5"}]';
-                // console.log(data);
+			var inputObj={};
+			inputObj["getKeywordsByInput"] =inputStr;
+			inputObj["vehicleTypeId"] = $(".vehicleTypeSel").val();
+
+            $(".busy-loader").hide().show();
+            $.post('./HomeController.php',inputObj,function (data){
+				$(".busy-loader").hide();
+                console.log(data);
 				if(data!='[]')
 				{
 					var usersData=$.parseJSON(data);
 					var listGroupDiv = $("<div class='resSuggDiv'><ul class='list-group'></ul></div>");
 					var liComp = "";
 					$.each(usersData,function(i,obj){
-						liComp += '<li class="list-group-item userSuggList" id="'+obj['id'] +'">'+obj['name']+'</li>';
+						liComp += '<li class="list-group-item userSuggList">'+obj+'</li>';
 
 					});
 					listGroupDiv.find("ul").append(liComp);
@@ -148,12 +149,11 @@ function start()
 	                $(".userSuggList").click(function(){
 	                	$('.keyword-identifier-vehicle').val($(this).html());
 	                	$(".resSuggDiv").remove();
-                        $("#wholebody_loader").show();
-                        // window.location.href = "ProfilePage.php?userid="+$(this).attr("id");
+                       $(".busy-loader").show();
 	                });
            		}
 
-			// });
+			});
 
 
 		});

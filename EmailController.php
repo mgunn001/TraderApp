@@ -5,7 +5,7 @@
 ini_set('display_errors', 1);
 error_reporting(-1);
 
- 	if(isset($_POST["mailbody"])){ //
+ 	if(isset($_POST["mailbody"])){ //route to MailService based on this attribute
 
  	  $sellerId = $_POST["sellerid"];
  	  $vehicleId = $_POST["vehicleid"];
@@ -18,7 +18,7 @@ error_reporting(-1);
 	  return $result;
  	}
 
- 	if(isset($_POST["comment"])){ //
+ 	if(isset($_POST["comment"])){ // route to Comment to seller based on attribute
 
  	  $sellerId = $_POST["sellerid"];
  	  $buyerId = $_POST["buyerid"];
