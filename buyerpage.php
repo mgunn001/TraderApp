@@ -42,34 +42,6 @@
 </nav>
 
 
-<div class="container-fluid mandatory-filter-items-wrapper" >
-    <div class="mandatory-filter-items well">
-    	<form class="form-inline mandatory-filter-items-form" action="buyerpage.php" method="post">
-    		  <input type="hidden" name="mandatoryFilterSubmit" value="true"></input>
-
-    		 <div class="form-group">
-			  <select class="form-control" class="vehicleType">
-				    <option value="1">Motar Cycle</option>
-				    <option value="2">Car</option>
-				    <option value="3">RV</option>
-				</select>
-			  </div>
-
-			  <div class="form-group">
-			    <input type="text" class="form-control vehicle-type" placeholder="Keyword" title="Enter Vehicle Type" name='keyword' id="keywordIP">
-			  </div>
-			  <div class="form-group">		  
-			    <input type="text" class="form-control zip-code" placeholder="Zip Code" title="Enter Zip Code" name='zipCode' id="zipcode">
-			  </div>
-			  <div class="form-group">		  
-			    <input type="text" class="form-control within-miles" placeholder="50 Miles" name='miles' title="look with in miles" id="withinmiles">
-			  </div>
-			  <button type="submit" title='Click to Search' class="btn btn-default">Search</button>
-		</form>
-    </div>
-</div>
-
-
 
  <?php
       include_once "./service/SearchService.php";
@@ -84,13 +56,67 @@
         //echo "Echoing details for vehicle with ID: -> ".$_POST['vehicleType'];
         $search_service = new SearchService();
         // this has to be modified by sending the params: Vehicle type, Zip and radius 
-        $resultObj= $search_service->getVehiclesByMandateFilters($_POST['vehicleType'],$_POST['zipCode'],$_POST['miles']);
+        $resultObj= $search_service->getVehiclesByMandateFilters($_POST['vehicleType'],$_POST['keyword'], $_POST['zipCode'],$_POST['miles']);
         $vehiclesListing = $resultObj;
         //echo var_dump($vehiclesListing[0]);
 		//echo var_dump($vehiclesListing[0]->getMetaData());
+
+        constructMandateFiltersFrom($_POST['vehicleType']);
 		constructFiltersToDisplay();
        	constructFilteredVehicleListingHTML($vehiclesListing);
-      }     
+      } else{
+
+      	constructMandateFiltersFrom('0');
+      }
+
+
+
+      function constructMandateFiltersFrom($selVehicleTypeId){
+		$vehicleTypeArr =["Motor Cycle","Car","RV","Truck"];
+      	echo '<div class="container-fluid mandatory-filter-items-wrapper" >
+		    <div class="mandatory-filter-items well">
+		    	<form class="form-inline mandatory-filter-items-form" action="buyerpage.php" method="post">
+		    		  <input type="hidden" name="mandatoryFilterSubmit" value="true"></input>
+
+		    		 <div class="form-group">
+					  	<select class="form-control vehicleTypeSel" name="vehicleType" class="vehicleType">'.constructOptions($vehicleTypeArr,$selVehicleTypeId)
+						   
+						.'</select>
+					  </div>
+
+					  <div class="form-group">
+					    <input type="text" class="form-control keyword-identifier-vehicle" placeholder="Keyword" title="Enter keyword for vehicle" name="keyword" id="keywordIP">
+					  </div>
+					  <div class="form-group">		  
+					    <input type="text" class="form-control zip-code" placeholder="Zip Code" title="Enter Zip Code" name="zipCode" id="zipcode">
+					  </div>
+					  <div class="form-group">		  
+					    <input type="text" class="form-control within-miles" placeholder="50 Miles" name="miles" title="look with in miles" id="withinmiles">
+					  </div>
+					  <button type="submit" title="Click to Search" class="btn btn-default">Search</button>
+				</form>
+		    </div>
+		</div>';
+      }
+
+
+      // Method to construct, the options for the Manatory from, this can be more dynamic, right now the vehicleTypeIds are hardcoded
+      function constructOptions($vehicleTypeArr,$selVehicleTypeId){
+      	$optionStr = "";
+      	// var_dump($vehicleTypeArr);
+      	// echo $selVehicleTypeId;
+      	$i =1;
+      	foreach($vehicleTypeArr as $curVehType) {
+  			if ($i == $selVehicleTypeId){
+				$optionStr .= '<option value="'.$i.'" selected>'.$curVehType .'</option>';
+  			}else{
+  				$optionStr .= '<option value="'.$i .'">'. $curVehType.'</option>';
+  			}
+  			$i++;
+		}
+      	return $optionStr;
+      }
+
 
 
 

@@ -1,6 +1,6 @@
 
   .mandatory-filter-items-form input{
-    height: 50px;
+    height: 40px;
   }
 
   .additional-filter-items .dropdown {
@@ -20,4 +20,5 @@
       background: blue;
       margin-top: -1%;
   }
+
 
