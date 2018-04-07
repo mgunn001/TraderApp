@@ -115,13 +115,9 @@ function start()
 
 
 
-<<<<<<< HEAD
 //suggestions
 		$('input.keyword-identifier-vehicle').keyup(function(){
-=======
-		//suggestions
-		$('input.vehicle-type').keyup(function(){
->>>>>>> 46d75b8da166d22109a6869c4ffbb42c13552d33
+
 			$(".resSuggDiv").remove();
 			var inputStr = $(this).val().trim();
 			var searchInput=$(this);
