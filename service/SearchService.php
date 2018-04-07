@@ -222,6 +222,7 @@
 		   $comment=mysqli_real_escape_string($conn,$comment);
 		  $queries = new Queries();
 		  $writeSellerCommentQuery = $queries->writeSellerComment($sellerId,$buyerId,$comment);
+		  echo $writeSellerCommentQuery;
 		  $sellerCommentQueryResult = $conn->query($writeSellerCommentQuery);
 		   if ($sellerCommentQueryResult === TRUE) {
 		        return 'comment created';
