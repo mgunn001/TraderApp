@@ -9,7 +9,7 @@
 
 	    public function getVehiclesByMandateFiltersQuery($vehicleType, $keyword, $zipCode,$miles){
 	    //$sql = 'SELECT * FROM `postedvehicles` where vehicleType='.$vehicleType;
- 		$sql = 'SELECT * FROM `postedvehicles`,`tagsonpostedvehicles`,`helpertags` where tagsonpostedvehicles.vehicleid=postedvehicles.id and  tagsonpostedvehicles.helpertagid=helpertags.helpertagid and helpertags.vehicletypeid='.$vehicleType.' and postedvehicles.price=50000 and helpertags.keyword="'.$keyword.'"';
+ 		$sql = 'SELECT * FROM `postedvehicles`,`tagsonpostedvehicles`,`helpertags` where tagsonpostedvehicles.vehicleid=postedvehicles.id and  tagsonpostedvehicles.helpertagid=helpertags.helpertagid and helpertags.vehicletypeid='.$vehicleType.' and helpertags.keyword="'.$keyword.'"';
 
 	      return $sql;
 	    }
