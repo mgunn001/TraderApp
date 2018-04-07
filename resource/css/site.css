@@ -180,3 +180,7 @@
 #wholebody_loader{
     height: 100%;
 }
+
+.filtered-vehicles-wrapper .card-text ul{
+  margin-left: -15%;
+}

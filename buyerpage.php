@@ -265,7 +265,7 @@
 
       function constructFilteredVehicleListingHTML($vehiclesListing){
       	if( count($vehiclesListing) < 1 || $vehiclesListing == null){
-      		echo "<h3> No Vehicles found </h3>";
+      		echo "<h2 style='text-align:center;'> No Vehicles found </h2>";
       		return;
       	}
       	$htmlContent ='';
