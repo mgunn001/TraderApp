@@ -121,6 +121,47 @@ function start()
 
         });
 
+//suggestions
+		$('input.vehicle-type').keyup(function(){
+			$(".resSuggDiv").remove();
+			var inputStr = $(this).val().trim();
+			var searchInput=$(this);
+			var inputData='{"inputString":"'+inputStr+'","workspaceid":"'+workspaceid+'"}';
+            $("#wholebody_loader").show();
+            $.post('./Controller.php',{"getWorkspaceUsersByInput":inputData},function (data){
+                $("#wholebody_loader").hide();
+
+                // console.log(data);
+				if(data!='[]')
+				{
+					var usersData=$.parseJSON(data);
+					var listGroupDiv = $("<div class='resSuggDiv'><ul class='list-group'></ul></div>");
+					var liComp = "";
+					$.each(usersData,function(i,obj){
+						liComp += '<li class="list-group-item userSuggList" id="'+obj['id'] +'">'+obj['name']+'</li>';
+
+					});
+					listGroupDiv.find("ul").append(liComp);
+	                $("body").append(listGroupDiv);
+	                var eleWidth=$('.left-inner-addon').width();
+	                listGroupDiv.css({
+	                 	position:'absolute',
+	                  	top:searchInput.offset().top+31,
+	                    left:searchInput.offset().left,
+	                    width:$('.left-inner-addon').width()
+	                });
+	                $(".userSuggList").click(function(){
+	                	$('.userProfileSearchInput').val($(this).html());
+	                	$(".resSuggDiv").remove();
+                        $("#wholebody_loader").show();
+                        // window.location.href = "ProfilePage.php?userid="+$(this).attr("id");
+	                });
+           		}
+			});
+
+		});
+
+
 
 	});
 

@@ -266,6 +266,6 @@
 
 
   ?>
-
+<div class="resSuggDiv" style="position: absolute;"></div>
 </body>
 </html>
