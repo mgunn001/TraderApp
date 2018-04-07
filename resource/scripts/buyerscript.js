@@ -118,15 +118,15 @@ function start()
 
 
 //suggestions
-		$('input.vehicle-type').keyup(function(){
+		$('input.keyword-identifier-vehicle').keyup(function(){
 			$(".resSuggDiv").remove();
 			var inputStr = $(this).val().trim();
 			var searchInput=$(this);
-			var inputData='{"inputString":"'+inputStr+'","workspaceid":"'+workspaceid+'"}';
+			// var inputData='{"inputString":"'+inputStr+'","workspaceid":"'+workspaceid+'"}';
             $("#wholebody_loader").show();
-            $.post('./Controller.php',{"getWorkspaceUsersByInput":inputData},function (data){
+            // $.post('./Controller.php',{"getWorkspaceUsersByInput":inputData},function (data){
                 $("#wholebody_loader").hide();
-
+                var data='[{"id":1,"name":"dumm"},{"id":2,"name":"dumm2"},{"id":3,"name":"dumm3"},{"id":4,"name":"dumm4"},{"id":5,"name":"dumm5"}]';
                 // console.log(data);
 				if(data!='[]')
 				{
@@ -139,21 +139,21 @@ function start()
 					});
 					listGroupDiv.find("ul").append(liComp);
 	                $("body").append(listGroupDiv);
-	                var eleWidth=$('.left-inner-addon').width();
+	                var eleWidth=$('.keyword-identifier-vehicle').width();
 	                listGroupDiv.css({
 	                 	position:'absolute',
 	                  	top:searchInput.offset().top+31,
 	                    left:searchInput.offset().left,
-	                    width:$('.left-inner-addon').width()
+	                    width:$('.keyword-identifier-vehicle').width()
 	                });
 	                $(".userSuggList").click(function(){
-	                	$('.userProfileSearchInput').val($(this).html());
+	                	$('.keyword-identifier-vehicle').val($(this).html());
 	                	$(".resSuggDiv").remove();
                         $("#wholebody_loader").show();
                         // window.location.href = "ProfilePage.php?userid="+$(this).attr("id");
 	                });
            		}
-			});
+			// });
 
 		});
 
