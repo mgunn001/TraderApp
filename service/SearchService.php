@@ -65,13 +65,13 @@
 
 
 					// filterting the vehicles based on miles and zipcode, happening at serverside, If we use NoSQL like elasticsearch in here, this can be done at the Database level it self.
-					// if($zipCode != "" && $miles != ""){
-					// 	// if(){ // with in range
+					if($zipCode != "" && $miles != ""){
+						if(){ // with in range
 
-					// 	// }
-					// }else{
-					// 	$resultSet[]= $vehicle; //though the Zip is given and Miles aren't given, all the vehicles are shown
-					// }
+						}
+					}else{
+						$resultSet[]= $vehicle; //though the Zip is given and Miles aren't given, all the vehicles are shown
+					}
 
 					$resultSet[]= $vehicle; 
 					
@@ -84,6 +84,17 @@
 		  return $resultSet;
 		}
 
+
+		function doesFallWithInRangeUsingZipCodes($from,$to,$miles){
+			$url='http://www.zipcodeapi.com/rest/JLXi98W5gX428RfOFL1sF7tjBpGhLt5xxUfS5NW7I1q4Axhotojpy3R7OuMkGIF1/distance.json/'.$from.'/'.$to.'/miles';
+ 			file_get_contents($url);
+ 			if( ){
+ 				return false;
+ 			}else{
+ 				return true;
+ 			}
+
+		}
 
 
 		// this has to be modified that the same method is called for both Manatory and additional ones

@@ -285,7 +285,7 @@
 		        }
 		        $htmlContent .= '<img class="card-img-top" src="'. htmlspecialchars($firstImgSrc).'">';
 	         	$htmlContent .= '<div class="card-block">
-		                <h4 class="card-title mt-3"><a href="./vehicledetails.php?vehicleID='.htmlspecialchars($vehicle->getId()).'"><span class="make">'.$vehicle->getMake().'</span><span class="model">'.htmlspecialchars($vehicle->getModel()).'</span><span class="year">('.htmlspecialchars($vehicle->getYear()).')</span></a></h4>';
+		                <h4 class="card-title mt-3"><a href="./vehicledetails.php?vehicleID='.htmlspecialchars($vehicle->getId()).'"><span class="make">'.htmlspecialchars($vehicle->getMake()).'</span><span class="model">'.htmlspecialchars($vehicle->getModel()).'</span><span class="year">('.htmlspecialchars($vehicle->getYear()).')</span></a></h4>';
 		         $propsToShowOnCard=['owners','fuel'];
 
 		        $htmlContent .='<div class="card-text">
@@ -317,7 +317,6 @@
      		}
      		return $htmlPropSpanToReturn;
      }
-
 
   ?>
 <div class="resSuggDiv" style="position: absolute;"></div>
