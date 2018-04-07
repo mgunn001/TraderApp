@@ -309,13 +309,13 @@
 
      // this method deals with fetching the imp props and value that are decided to be shown on the card
      function getSpecificAttributeFromMetaData($metaDataList, $propList){
-     		$htmlPropSpanToReturn = '';
-     		foreach ($metaDataList as $metaData){
-     			if(in_array(strtolower($metaData -> getProperty()) , $propList)){
-     				$htmlPropSpanToReturn.= '<span class="divider">|</span><span class="'.htmlspecialchars($metaData -> getProperty()).'">'.htmlspecialchars($metaData -> getProperty()).':&nbsp;'.htmlspecialchars($metaData -> getPropertyValue()).'</span>';
-     			}
-     		}
-     		return $htmlPropSpanToReturn;
+ 		$htmlPropSpanToReturn = '';
+ 		foreach ($metaDataList as $metaData){
+ 			if(in_array(strtolower($metaData -> getProperty()) , $propList)){
+ 				$htmlPropSpanToReturn.= '<span class="divider">|</span><span class="'.htmlspecialchars($metaData -> getProperty()).'">'.htmlspecialchars($metaData -> getProperty()).':&nbsp;'.htmlspecialchars($metaData -> getPropertyValue()).'</span>';
+ 			}
+ 		}
+ 		return $htmlPropSpanToReturn;
      }
 
   ?>
