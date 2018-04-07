@@ -279,7 +279,10 @@
 			foreach ($vehiclesListing as $vehicle){
 	            $htmlContent .= '<div class="col-sm-6 col-lg-3">
 		        <div class="card" carid="'.htmlspecialchars($vehicle->getId()).'">';
-		        $firstImgSrc = $vehicle->getImages()[0];
+		        $firstImgSrc = null;
+		        if(count($vehicle->getImages()) >0 ){
+		        	  $firstImgSrc = $vehicle->getImages()[0];
+		        }
 		        if( $firstImgSrc == null){
 		        	$firstImgSrc = 'http://sifatit.com/wp-content/uploads/2012/07/dummy.jpg';
 		        }

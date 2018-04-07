@@ -4,3 +4,91 @@ INSERT INTO `Trader`.`postedvehicles` (`id`, `year`, `make`, `model`, `milesDriv
 INSERT INTO `Trader`.`vehiclemetadata` (`id`, `vehicleId`, `property`, `propertyValue`) VALUES (NULL, '3', 'Silenser', '2');
 
 INSERT INTO `Trader`.`vehiclemedia` (`id`, `vehicleId`, `mediaType`, `Path`) VALUES (NULL, '3', '1', 'http://motoparttoto.com/wp-content/uploads/2014/07/248b6f16bf-e1406744464522.png');
+
+
+
+INSERT INTO `Trader`.`helpertags` (`id`, `keyword`, `vehicletypeid`) VALUES (NULL, 'Super Bike', '1'), (NULL, 'Sport Bike', '1');
+
+
+INSERT INTO `Trader`.`tagsonpostedvehicles` (`vehicleid`, `helpertagid`) VALUES ('1', '1'), ('1', '2'),('1', '3'),('1', '6');
+
+
+INSERT INTO `Trader`.`postedvehicles` (`id`, `year`, `make`, `model`, `milesDriven`, `price`, `vehicleType`, `description`, `sellerId`, `timePosted`) VALUES (NULL, '2005', 'Audi', 'A3', '10000', '5000', '2', 'Brand New Audi A3', '2', CURRENT_TIMESTAMP);
+
+
+
+
+
+INSERT INTO `Trader`.`postedvehicles` (`id`, `year`, `make`, `model`, `milesDriven`, `price`, `vehicleType`, `description`, `sellerId`, `timePosted`) VALUES (10, '2015', 'Yamaha', 'R15', '10000', '5000', '1', 'Brand New', '2', CURRENT_TIMESTAMP);
+
+INSERT INTO `Trader`.`postedvehicles` (`id`, `year`, `make`, `model`, `milesDriven`, `price`, `vehicleType`, `description`, `sellerId`, `timePosted`) VALUES (11, '2000', 'Suzuki', 'HayaBusa', '15000', '20000', '1', 'Brand New', '2', CURRENT_TIMESTAMP);
+
+
+INSERT INTO `Trader`.`postedvehicles` (`id`, `year`, `make`, `model`, `milesDriven`, `price`, `vehicleType`, `description`, `sellerId`, `timePosted`) VALUES (12, '2012', 'Yamaha', 'R15', '20000', '15000', '1', 'Brand New', '2', CURRENT_TIMESTAMP);
+
+
+INSERT INTO `Trader`.`postedvehicles` (`id`, `year`, `make`, `model`, `milesDriven`, `price`, `vehicleType`, `description`, `sellerId`, `timePosted`) VALUES (13, '2011', 'Yamaha', 'R1', '5000', '25000', '1', 'Brand New', '2', CURRENT_TIMESTAMP);
+
+
+INSERT INTO `Trader`.`postedvehicles` (`id`, `year`, `make`, `model`, `milesDriven`, `price`, `vehicleType`, `description`, `sellerId`, `timePosted`) VALUES (14, '2015', 'Suzuki', 'Hayate', '10000', '5000', '1', 'Brand New', '2', CURRENT_TIMESTAMP);
+
+INSERT INTO `Trader`.`postedvehicles` (`id`, `year`, `make`, `model`, `milesDriven`, `price`, `vehicleType`, `description`, `sellerId`, `timePosted`) VALUES (NULL, '2000', 'Yamaha', 'R1', '15000', '20000', '1', 'Brand New', '2', CURRENT_TIMESTAMP);
+
+
+INSERT INTO `Trader`.`postedvehicles` (`id`, `year`, `make`, `model`, `milesDriven`, `price`, `vehicleType`, `description`, `sellerId`, `timePosted`) VALUES (15, '2012', 'Suzuki', 'HayaBusa', '20000', '15000', '1', 'Brand New', '2', CURRENT_TIMESTAMP);
+
+
+INSERT INTO `Trader`.`postedvehicles` (`id`, `year`, `make`, `model`, `milesDriven`, `price`, `vehicleType`, `description`, `sellerId`, `timePosted`) VALUES (16, '2011', 'Yamaha', 'R15', '5000', '25000', '1', 'Super Bike', '2', CURRENT_TIMESTAMP);
+
+INSERT INTO `Trader`.`postedvehicles` (`id`, `year`, `make`, `model`, `milesDriven`, `price`, `vehicleType`, `description`, `sellerId`, `timePosted`) VALUES (17, '2015', 'Suzuki', 'Hayate', '10000', '5000', '1', 'Super Bike', '2', CURRENT_TIMESTAMP);
+
+INSERT INTO `Trader`.`postedvehicles` (`id`, `year`, `make`, `model`, `milesDriven`, `price`, `vehicleType`, `description`, `sellerId`, `timePosted`) VALUES (18, '2000', 'Suzuki', 'Hayate', '15000', '20000', '1', 'Super Bike', '2', CURRENT_TIMESTAMP);
+
+
+INSERT INTO `Trader`.`postedvehicles` (`id`, `year`, `make`, `model`, `milesDriven`, `price`, `vehicleType`, `description`, `sellerId`, `timePosted`) VALUES (19, '2012', 'Suzuki', 'HayaBusa', '20000', '15000', '1', 'Super Bike', '2', CURRENT_TIMESTAMP);
+
+
+INSERT INTO `Trader`.`postedvehicles` (`id`, `year`, `make`, `model`, `milesDriven`, `price`, `vehicleType`, `description`, `sellerId`, `timePosted`) VALUES (20, '2011', 'Yamaha', 'R1', '5000', '25000', '1', 'Super Bike', '2', CURRENT_TIMESTAMP);
+
+
+
+
+
+
+
+INSERT INTO `tagsonpostedvehicles` (`vehicleid`, `helpertagid`) VALUES
+(1,7),
+(4,9),
+(4,10),
+(4,11),
+(5,7),
+(5,8),
+(6,7),
+(6,9),
+(6,10),
+(6,11),
+(7,7),
+(7,8),
+(7,9),
+(7,10),
+(8,7),
+(8,8),
+(8,9),
+(9,7),
+(9,8),
+(9,9),
+(9,10),
+(9,11),
+(4,7),
+(4,8),
+(9,7),
+(2,7),
+(2,8),
+(2,9),
+(2,10),
+(5,9),
+(5,10);
+
+
+
+

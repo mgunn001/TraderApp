@@ -27,8 +27,8 @@
 		  $queries = new Queries();
 		$getVehiclesQuery = $queries->getVehiclesByMandateFiltersQuery($vehicleType, $keyword, $zipCode,$miles);
 		 // $getVehiclesQuery = $queries->getAllVehiclesQuery();
-	    //echo $getVehiclesQuery;
-
+	   // echo $getVehiclesQuery;
+	  // return;
 		  $vehiclesQueryResult = $conn->query($getVehiclesQuery);
 		  
 		  if ($vehiclesQueryResult!=null &&  $vehiclesQueryResult->num_rows > 0) {
@@ -58,9 +58,7 @@
 						$metaData = new MetaData($metaDataEachRow['property'],$metaDataEachRow['propertyValue']);
 						$metaDataList[]=$metaData;			            
 				      }
-					} else {
-					    return null;
-					}
+					} 
 
 					$getVehicleImagesQuery = $queries->getVehicleImages($eachRow['id']);
 		            $vehicleImagesQueryResult = $conn->query($getVehicleImagesQuery);
@@ -71,10 +69,7 @@
 						$imagesList[]=$imageEachRow['Path'];			            
 
 				      }
-					} else {
-					    return null;
-					}
-
+					} 
 
 					$vehicle = new Vehicle($eachRow['id'],$eachRow['year'],$eachRow['make'],$eachRow['model'],$eachRow['milesDriven'],$eachRow['price'],$eachRow['vehicleType'],$eachRow['description'],$metaDataList,$imagesList);
 					$resultSet[]= $vehicle; 
@@ -151,15 +146,16 @@
 
 
 		public function doesFallWithInMileRangeUsingZipCodes($from,$to,$miles){
-			$url='http://www.zipcodeapi.com/rest/JLXi98W5gX428RfOFL1sF7tjBpGhLt5xxUfS5NW7I1q4Axhotojpy3R7OuMkGIF1/distance.json/'.$from.'/'.$to.'/miles';
- 			$resultDistObj = file_get_contents($url);
- 			$distance = Json_decode($resultDistObj,true)['distance'];
+			// $url='http://www.zipcodeapi.com/rest/JLXi98W5gX428RfOFL1sF7tjBpGhLt5xxUfS5NW7I1q4Axhotojpy3R7OuMkGIF1/distance.json/'.$from.'/'.$to.'/miles';
+ 		// 	$resultDistObj = file_get_contents($url);
+ 		// 	$distance = Json_decode($resultDistObj,true)['distance'];
 
- 			if($distance > intval($miles)){
- 				return false;
- 			}else{
- 				return true;
- 			}
+ 		// 	if($distance > intval($miles)){
+ 		// 		return false;
+ 		// 	}else{
+ 		// 		return true;
+ 		// 	}
+ 			return true;
 
 		}
 
@@ -271,7 +267,6 @@
 		   $comment=mysqli_real_escape_string($conn,$comment);
 		  $queries = new Queries();
 		  $writeSellerCommentQuery = $queries->writeSellerComment($sellerId,$buyerId,$comment);
-		  echo $writeSellerCommentQuery;
 		  $sellerCommentQueryResult = $conn->query($writeSellerCommentQuery);
 		   if ($sellerCommentQueryResult === TRUE) {
 		        return 'comment created';
