@@ -76,7 +76,50 @@ function start()
 		    });
 
         });
+         $(document).on("click",".commenttext-submitBtn",function(e){
+         	$(".busy-loader").show();
+         	var reqObjPost= {};
+         	reqObjPost['comment'] = $(".commenttext-topost-buyer").val();
+         	reqObjPost['buyerid'] = '1';
+         	reqObjPost['sellerid'] = $(".emailSellerBtn").attr("sellerid");
 
+        	$.ajax({
+		        url: './EmailController.php',
+		        type: 'post',
+		        data: reqObjPost,
+		        dataType: 'text',
+		        success: function (data) {
+		        	$(".busy-loader").hide();
+		        	if ($.trim(data)=="fail")
+		        	{
+		        		$('#errorModal .modal-body').html("<p>Contact admin, Something went wrong.</p>");
+						$('#errorModal').on('hidden.bs.modal', function (e) {
+							$('#errorModal').off();
+						});
+						
+						$("#errorModal").modal("show");
+						$("#errorModal").css("z-index","1100");
+
+		        	}
+		        	else
+		        	{
+		        		$('#successModal .modal-body').html("<p>Commented successfully. </p>");
+						$('#successModal').on('hidden.bs.modal', function (e) {  
+							$('#successModal').off();
+							location.reload();
+								
+						});
+
+						$("#successModal").modal("show");
+						$("#successModal").css("z-index","1100");
+
+		        	}
+
+		        }
+
+		    });
+
+        });
 
 
 	});

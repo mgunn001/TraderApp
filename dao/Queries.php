@@ -50,7 +50,7 @@
 	      return $sql;
 	    }
 	    public function writeSellerComment($sellerId,$buyerId,$comment){
-	      $sql = 'INSERT INTO `buyercomments` (`id`, `buyerId`, `sellerId`, `comment`, `timestamp`) VALUES (NULL, '.$buyerId.', '.$sellerId.', "'.$comment.'", "")'  ;
+	      $sql = 'INSERT INTO `buyercomments` (`id`, `buyerId`, `sellerId`, `comment`) VALUES (NULL, '.$buyerId.', '.$sellerId.', "'.$comment.'")'  ;
 	      return $sql;
 	    }
 

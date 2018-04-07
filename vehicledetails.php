@@ -94,7 +94,7 @@
              }else{
                 $htmlContent .= '<div class="item">';
              }
-             $htmlContent .= '<img src="'.$image.'" alt="Image"></div>';
+             $htmlContent .= '<img src="'.htmlspecialchars($image).'" alt="Image"></div>';
               $i++;        
            }
 
@@ -109,17 +109,17 @@
                     </div>';
             $htmlContent .='<div class="description-container">
                      <h3>Description</h3>
-                     <p>'.$vehicle->getDescription().'</p>
+                     <p>'.htmlspecialchars($vehicle->getDescription()).'</p>
                     </div>
                   </div>
                 </div>'; 
 
                 $htmlContent .=' <div class="col-lg-3">
-                    <div class="row vehicle-main-details" vehicleid="'.$vehicle->getId() .'"> 
+                    <div class="row vehicle-main-details" vehicleid="'.htmlspecialchars($vehicle->getId()) .'"> 
                       <ul>
-                        <li> <h3><span class="price"> $'.$vehicle->getPrice().' </span></h3></li>
-                        <li><span class="make">'.$vehicle->getMake().'</span> <span class="model">'.$vehicle->getModel().'</span> <span class="year">('.$vehicle->getYear().')</span></li>
-                        <li> <input type="button" class="btn btn-primary emailSellerBtn" data-toggle="modal" data-target="#emailSellerModal" value="Email Seller" sellerid="'.$sellerId.'"/></li>
+                        <li> <h3><span class="price"> $'.htmlspecialchars($vehicle->getPrice()).' </span></h3></li>
+                        <li><span class="make">'.htmlspecialchars($vehicle->getMake()).'</span> <span class="model">'.htmlspecialchars($vehicle->getModel()).'</span> <span class="year">('.htmlspecialchars($vehicle->getYear()).')</span></li>
+                        <li> <input type="button" class="btn btn-primary emailSellerBtn" data-toggle="modal" data-target="#emailSellerModal" value="Email Seller" sellerid="'.htmlspecialchars($sellerId).'"/></li>
                       </ul>
 
                     </div>
@@ -131,8 +131,8 @@
 
                 foreach ($metaDataList as  $metaDataObj ){
                         $htmlContent .='<tr>
-                            <td class="attribute">'.$metaDataObj->getProperty().'</td>
-                            <td class="value">'.$metaDataObj->getPropertyValue().'</td>
+                            <td class="attribute">'.htmlspecialchars($metaDataObj->getProperty()).'</td>
+                            <td class="value">'.htmlspecialchars($metaDataObj->getPropertyValue()).'</td>
                           </tr>';
                  }
 
@@ -157,9 +157,9 @@
           foreach ($sellerCommentsObj as $sellerComment) {
           
           
-          $commentsHtmlContent.='<div class="row review-by-buyer" reviewid="'.$sellerComment->getId().'"> 
-                <div class="col-lg-1"> <img src="https://s.gravatar.com/avatar/5a576a6969e99ea0652c734ca15c4cc5?s=80" class="img-responsive img-circle" alt="Cinque Terre"> </div> '.$sellerComment->getCommenterName().'<br>'.$sellerComment->getTimePosted().'
-                <div class="col-lg-11"><div class="reviewtext-container"> '.$sellerComment->getComment().'</div></div> 
+          $commentsHtmlContent.='<div class="row review-by-buyer" reviewid="'.htmlspecialchars($sellerComment->getId()).'"> 
+                <div class="col-lg-1"> <img src="https://s.gravatar.com/avatar/5a576a6969e99ea0652c734ca15c4cc5?s=80" class="img-responsive img-circle" alt="Cinque Terre"> </div> '.htmlspecialchars($sellerComment->getCommenterName()).'<br>'.$sellerComment->getTimePosted().'
+                <div class="col-lg-11"><div class="reviewtext-container"> '.htmlspecialchars($sellerComment->getComment()).'</div></div> 
               </div>';
           }
         }
@@ -204,7 +204,7 @@
                 <div class="form-group" style="width:90%">         
                   <textarea class="commenttext-topost-buyer" name="commenttexttopost" style="width:100%"></textarea>
                 </div>
-                <button type="submit" class="btn btn-default commenttext-submitBtn">Submit</button>
+                <input type="button" class="btn btn-default commenttext-submitBtn" value="Comment"></button>
               </form>
             </div>
           </div>

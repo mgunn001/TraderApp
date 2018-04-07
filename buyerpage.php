@@ -224,20 +224,20 @@
 
 			foreach ($vehiclesListing as $vehicle){
 	            $htmlContent .= '<div class="col-sm-6 col-lg-3">
-		        <div class="card" carid="'.$vehicle->getId().'">';
+		        <div class="card" carid="'.htmlspecialchars($vehicle->getId()).'">';
 		        $firstImgSrc = $vehicle->getImages()[0];
 		        if( $firstImgSrc == null){
 		        	$firstImgSrc = 'http://sifatit.com/wp-content/uploads/2012/07/dummy.jpg';
 		        }
-		        $htmlContent .= '<img class="card-img-top" src="'. $firstImgSrc.'">';
+		        $htmlContent .= '<img class="card-img-top" src="'. htmlspecialchars($firstImgSrc).'">';
 	         	$htmlContent .= '<div class="card-block">
-		                <h4 class="card-title mt-3"><a href="./vehicledetails.php?vehicleID='.$vehicle->getId().'"><span class="make">'.$vehicle->getMake().'</span><span class="model">'.$vehicle->getModel().'</span><span class="year">('.$vehicle->getYear().')</span></a></h4>';
+		                <h4 class="card-title mt-3"><a href="./vehicledetails.php?vehicleID='.htmlspecialchars($vehicle->getId()).'"><span class="make">'.$vehicle->getMake().'</span><span class="model">'.htmlspecialchars($vehicle->getModel()).'</span><span class="year">('.htmlspecialchars($vehicle->getYear()).')</span></a></h4>';
 		         $propsToShowOnCard=['owners','fuel'];
 
 		        $htmlContent .='<div class="card-text">
 		                	<ul>
-		                		<li> <span class="price" style="font-weight: bold">$'.$vehicle->getPrice().'</span></li>
-		                		<li> <span class="mileage">'.$vehicle->getMilesDriven() .'Miles</span>'.getSpecificAttributeFromMetaData($vehicle->getMetaData(),$propsToShowOnCard) .'</li>
+		                		<li> <span class="price" style="font-weight: bold">$'.htmlspecialchars($vehicle->getPrice()).'</span></li>
+		                		<li> <span class="mileage">'.htmlspecialchars($vehicle->getMilesDriven()) .'Miles</span>'.htmlspecialchars(getSpecificAttributeFromMetaData($vehicle->getMetaData(),$propsToShowOnCard)) .'</li>
 		                	</ul>
 		                	</div>
 							</div>
@@ -258,7 +258,7 @@
      		$htmlPropSpanToReturn = '';
      		foreach ($metaDataList as $metaData){
      			if(in_array(strtolower($metaData -> getProperty()) , $propList)){
-     				$htmlPropSpanToReturn.= '<span class="divider">|</span><span class="'.$metaData -> getProperty().'">'.$metaData -> getProperty().':&nbsp;'.$metaData -> getPropertyValue().'</span>';
+     				$htmlPropSpanToReturn.= '<span class="divider">|</span><span class="'.htmlspecialchars($metaData -> getProperty()).'">'.htmlspecialchars($metaData -> getProperty()).':&nbsp;'.htmlspecialchars($metaData -> getPropertyValue()).'</span>';
      			}
      		}
      		return $htmlPropSpanToReturn;

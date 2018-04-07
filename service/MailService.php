@@ -89,7 +89,7 @@
 
 		      $mail->Subject = 'New buyer for the car open for selling';
 
-		      $mail->Body    =" A person is interested in the vehicle posted by you. <br />".$vehicleDetailsStr."<br />".$buyerDetailsStr."<br /> Message from buyer: '".$mailBody."'";
+		      $mail->Body    =" A person is interested in the vehicle posted by you. <br />".$vehicleDetailsStr."<br />".$buyerDetailsStr."<br /> Message from buyer: <br />'".$mailBody."'";
 
 		      // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
  
