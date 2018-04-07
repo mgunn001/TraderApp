@@ -1,0 +1,6 @@
+INSERT INTO `Trader`.`postedvehicles` (`id`, `year`, `make`, `model`, `milesDriven`, `price`, `vehicleType`, `description`, `sellerId`, `timePosted`) VALUES (NULL, '2016', 'Yamaha', 'R1', '2000', '10000', '1', 'My Super bike', '1', CURRENT_TIMESTAMP);
+
+
+INSERT INTO `Trader`.`vehiclemetadata` (`id`, `vehicleId`, `property`, `propertyValue`) VALUES (NULL, '3', 'Silenser', '2');
+
+INSERT INTO `Trader`.`vehiclemedia` (`id`, `vehicleId`, `mediaType`, `Path`) VALUES (NULL, '3', '1', 'http://motoparttoto.com/wp-content/uploads/2014/07/248b6f16bf-e1406744464522.png');

@@ -1,16 +1,18 @@
 function start()
 {
+
+		//1-MotoCycle, 2- Car, 3- RV this data has to sit in DB, but for time being a JSON Object is considered, All Available VehicleTypes, Make and corresponding models
 		var vehicleMakeAndModel={
-			"car":{
+			"1":{
+				"Yamaha":['R1','R15'],
+				"Suzuki":['HayaBusa','Hayate']
+			},
+			"2":{
 				"honda":['Accord','Amaze','CRV'],
 				"bmw":['X1,X5,X6,I8'],
 				"audi":['A3','A5','A8','Q7']
 			},
-			"bike":{
-				"Yamaha":['R1','R15'],
-				"Suzuki":['HayaBusa','Hayate']
-			},
-			"rv":{
+			"3":{
 				"ForestRiver":['Model1','Model2'],
 				"Keystone":['Model1','Model2']
 			}

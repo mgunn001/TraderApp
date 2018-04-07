@@ -7,8 +7,8 @@
 	      return $sql;
 	    }
 
-	    public function getVehiclesByMandateFiltersQuery($vehicleTypeId){
-	     $sql = 'SELECT * FROM `postedvehicles` where vehicleType='.$vehicleTypeId;
+	    public function getVehiclesByMandateFiltersQuery($vehicleType, $keyword, $zipCode,$miles){
+	     $sql = 'SELECT * FROM `postedvehicles` where vehicleType='.$vehicleType;
 	      return $sql;
 	    }
 

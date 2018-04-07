@@ -12,20 +12,21 @@
 	class SearchService
 	{
 
-		public function getVehiclesByMandateFilters($vehicleType,$zipCode,$miles)
+		public function getVehiclesByMandateFilters($vehicleType, $keyword, $zipCode,$miles)
 		{
 		  $resultSet = [];
 		  $database_connection = new DatabaseConnection();
 		  $conn = $database_connection->getConnection();
 
 		  // to to be done in a seperate method which accepts the raw request object and retuns after applying escape string
-		   $vehicleTypeId=mysqli_real_escape_string($conn,$vehicleType);
-		   $zipCode=mysqli_real_escape_string($conn,$zipCode);
-		   $miles=mysqli_real_escape_string($conn,$miles);
+		   $vehicleType= mysqli_real_escape_string($conn,$vehicleType);
+		   $keyword = mysqli_real_escape_string($conn,$keyword);
+		   $zipCode= mysqli_real_escape_string($conn,$zipCode);
+		   $miles= mysqli_real_escape_string($conn,$miles);
 
 		  $queries = new Queries();
-		 // $getVehiclesQuery = $queries->getVehiclesByMandateFiltersQuery($vehicleTypeId);
-		  $getVehiclesQuery = $queries->getAllVehiclesQuery();
+		$getVehiclesQuery = $queries->getVehiclesByMandateFiltersQuery($vehicleType, $keyword, $zipCode,$miles);
+		 // $getVehiclesQuery = $queries->getAllVehiclesQuery();
 		 //echo $getVehiclesQuery;
 
 		  $vehiclesQueryResult = $conn->query($getVehiclesQuery);
