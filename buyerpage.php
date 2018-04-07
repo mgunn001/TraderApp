@@ -61,27 +61,23 @@
         //echo var_dump($vehiclesListing[0]);
 		//echo var_dump($vehiclesListing[0]->getMetaData());
 
-        constructMandateFiltersFrom($_POST['vehicleType']);
+
+
+        constructMandateFiltersFrom($_POST['vehicleType'],$_POST['keyword'], $_POST['zipCode'],$_POST['miles']);
 		constructFiltersToDisplay();
        	constructFilteredVehicleListingHTML($vehiclesListing);
       } else{
-
-      	constructMandateFiltersFrom('0');
-      }
-
-
-
-      function constructMandateFiltersFrom($selVehicleTypeId){
-		$vehicleTypeArr =["Motor Cycle","Car","RV","Truck"];
       	echo '<div class="container-fluid mandatory-filter-items-wrapper" >
 		    <div class="mandatory-filter-items well">
 		    	<form class="form-inline mandatory-filter-items-form" action="buyerpage.php" method="post">
 		    		  <input type="hidden" name="mandatoryFilterSubmit" value="true"></input>
 
 		    		 <div class="form-group">
-					  	<select class="form-control vehicleTypeSel" name="vehicleType" class="vehicleType">'.constructOptions($vehicleTypeArr,$selVehicleTypeId)
-						   
-						.'</select>
+					  	<select class="form-control vehicleTypeSel" name="vehicleType" class="vehicleType">			<option value="1">Motor Cycle</option>
+					  		<option value="2" selected="">Car</option>
+					  		<option value="3">RV</option>
+					  		<option value="4">Truck</option>
+						</select>
 					  </div>
 
 					  <div class="form-group">
@@ -92,6 +88,36 @@
 					  </div>
 					  <div class="form-group">		  
 					    <input type="text" class="form-control within-miles" placeholder="50 Miles" name="miles" title="look with in miles" id="withinmiles">
+					  </div>
+					  <button type="submit" title="Click to Search" class="btn btn-default">Search</button>
+				</form>
+		    </div>
+		</div>';
+      }
+
+
+
+      function constructMandateFiltersFrom($selVehicleTypeId,$keyword,$zipcode,$miles){
+      	$selVehicleTypeId = $_POST['vehicleType'];
+		$vehicleTypeArr =["Motor Cycle","Car","RV","Truck"];
+      	echo '<div class="container-fluid mandatory-filter-items-wrapper" >
+		    <div class="mandatory-filter-items well">
+		    	<form class="form-inline mandatory-filter-items-form" action="buyerpage.php" method="post">
+		    		  <input type="hidden" name="mandatoryFilterSubmit" value="true"></input>
+
+		    		 <div class="form-group">
+					  	<select class="form-control vehicleTypeSel" name="vehicleType" class="vehicleType">'.constructOptions($vehicleTypeArr,$selVehicleTypeId)					   
+						.'</select>
+					  </div>
+
+					  <div class="form-group">
+					    <input type="text" class="form-control keyword-identifier-vehicle" placeholder="Keyword" title="Enter keyword for vehicle" name="keyword" id="keywordIP" value="'.htmlspecialchars($keyword).'">
+					  </div>
+					  <div class="form-group">		  
+					    <input type="text" class="form-control zip-code" placeholder="Zip Code" title="Enter Zip Code" name="zipCode" id="zipcode" value='.$zipcode.'>
+					  </div>
+					  <div class="form-group">		  
+					    <input type="text" class="form-control within-miles" placeholder="50 Miles" name="miles" title="look with in miles" id="withinmiles" value='.$miles.'>
 					  </div>
 					  <button type="submit" title="Click to Search" class="btn btn-default">Search</button>
 				</form>
@@ -238,7 +264,7 @@
       }
 
       function constructFilteredVehicleListingHTML($vehiclesListing){
-      	if(count($vehiclesListing) < 1){
+      	if( count($vehiclesListing) < 1 || $vehiclesListing == null){
       		echo "<h3> No Vehicles found </h3>";
       		return;
       	}
@@ -263,7 +289,7 @@
 		        $htmlContent .='<div class="card-text">
 		                	<ul>
 		                		<li> <span class="price" style="font-weight: bold">$'.htmlspecialchars($vehicle->getPrice()).'</span></li>
-		                		<li> <span class="mileage">'.htmlspecialchars($vehicle->getMilesDriven()) .'Miles</span>'.htmlspecialchars(getSpecificAttributeFromMetaData($vehicle->getMetaData(),$propsToShowOnCard)) .'</li>
+		                		<li> <span class="mileage">'.htmlspecialchars($vehicle->getMilesDriven()) .'Miles</span>'.getSpecificAttributeFromMetaData($vehicle->getMetaData(),$propsToShowOnCard) .'</li>
 		                	</ul>
 		                	</div>
 							</div>

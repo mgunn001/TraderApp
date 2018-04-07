@@ -3,12 +3,14 @@
 	class Queries
 	{
 	    public function getAllVehiclesQuery(){
-	      $sql = 'SELECT * FROM `postedvehicles`'  ;
+	      $sql = 'SELECT * FROM `postedvehicles` where vehicleType';
 	      return $sql;
 	    }
 
 	    public function getVehiclesByMandateFiltersQuery($vehicleType, $keyword, $zipCode,$miles){
-	     $sql = 'SELECT * FROM `postedvehicles` where vehicleType='.$vehicleType;
+	    //$sql = 'SELECT * FROM `postedvehicles` where vehicleType='.$vehicleType;
+ 		$sql = 'SELECT * FROM `postedvehicles`,`tagsonpostedvehicles`,`helpertags` where tagsonpostedvehicles.vehicleid=postedvehicles.id and  tagsonpostedvehicles.helpertagid=helpertags.id and helpertags.vehicletypeid='.$vehicleType.' and helpertags.keyword="'.$keyword.'"';
+
 	      return $sql;
 	    }
 

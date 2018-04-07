@@ -27,11 +27,11 @@
 		  $queries = new Queries();
 		$getVehiclesQuery = $queries->getVehiclesByMandateFiltersQuery($vehicleType, $keyword, $zipCode,$miles);
 		 // $getVehiclesQuery = $queries->getAllVehiclesQuery();
-		 //echo $getVehiclesQuery;
+	    //echo $getVehiclesQuery;
 
 		  $vehiclesQueryResult = $conn->query($getVehiclesQuery);
 		  
-		  if ($vehiclesQueryResult->num_rows > 0) {
+		  if ($vehiclesQueryResult!=null &&  $vehiclesQueryResult->num_rows > 0) {
 		      while($eachRow = $vehiclesQueryResult->fetch_assoc()) {
 		            // $resultSet[]= $eachRow;
 		            $getVehicleMetaDataQuery = $queries->getVehicleMetaData($eachRow['id']);
@@ -43,7 +43,7 @@
 						$metaDataList[]=$metaData;			            
 				      }
 					} else {
-					    return 'fail';
+					    return null;
 					}
 
 					$getVehicleImagesQuery = $queries->getVehicleImages($eachRow['id']);
@@ -56,7 +56,7 @@
 
 				      }
 					} else {
-					    return 'fail';
+					    return null;
 					}
 
 
@@ -78,7 +78,7 @@
 		      }
 		  } else {
 
-		      return 'fail';
+		      return null;
 		  }
 		  $conn->close();
 		  return $resultSet;
@@ -113,7 +113,7 @@
 
 					      }
 					} else {
-					    return 'fail';
+					    return null;
 					}
 
 					$getVehicleImagesQuery = $queries->getVehicleImages($eachRow['id']);
@@ -126,7 +126,7 @@
 
 					      }
 					} else {
-					    return 'fail';
+					    return null;
 					}
 
 					$vehicle = new Vehicle($eachRow['id'],$eachRow['year'],$eachRow['make'],$eachRow['model'],$eachRow['milesDriven'],$eachRow['price'],$eachRow['vehicleType'],$eachRow['description'],$metaDataList,$imagesList);
@@ -137,7 +137,7 @@
 		      }
 		  } else {
 
-		      return 'fail';
+		      return null;
 		  }
 		  $conn->close();
 		  return $resultSet;
