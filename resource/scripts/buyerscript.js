@@ -53,7 +53,6 @@ function start()
           // handler to change the Make and Body on vehicle type slection, just as a sample,
           // Here the values are read from JSON instood they got be fetched from DB on UI Initialization itslef All Ajax calls are made.
 	    $(document).on("change",".vehicleTypeSel",function(e){
-
 	    	// for make value updation
 	    	var curVehicleType = $(this).val();
 	    	var makeArry = Object.keys(vehicleMakeAndModel[curVehicleType]);
@@ -77,7 +76,6 @@ function start()
 	    		}
 	    	}
 	    	$(".bodytype-dropdown .dropdown-menu").html(bodyTypeCheckBoxListHTML);
-
 
 	    	console.log("Inside on change of vehicleTypeSel");
 	    });
@@ -117,8 +115,13 @@ function start()
 
 
 
+<<<<<<< HEAD
 //suggestions
 		$('input.keyword-identifier-vehicle').keyup(function(){
+=======
+		//suggestions
+		$('input.vehicle-type').keyup(function(){
+>>>>>>> 46d75b8da166d22109a6869c4ffbb42c13552d33
 			$(".resSuggDiv").remove();
 			var inputStr = $(this).val().trim();
 			var searchInput=$(this);
@@ -153,10 +156,11 @@ function start()
                         // window.location.href = "ProfilePage.php?userid="+$(this).attr("id");
 	                });
            		}
+
 			// });
 
-		});
 
+		});
 
 
 	});

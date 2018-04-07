@@ -33,6 +33,22 @@
 		  
 		  if ($vehiclesQueryResult!=null &&  $vehiclesQueryResult->num_rows > 0) {
 		      while($eachRow = $vehiclesQueryResult->fetch_assoc()) {
+		           
+		      		$SearchServiceObj = new SearchService();
+
+		      		// to get the zipcode for seller based on vehicle ID 
+		      	 	$getZipcodeQuery = $queries->getSellerZip($eachRow['id']);
+		      	 	//echo $getZipcodeQuery;
+		      	 	//return;
+		      	 	$curVehicleZipcodeObj = $conn->query($getZipcodeQuery);
+
+		      		// filterting the vehicles based on miles and zipcode, happening at serverside, If we use NoSQL like elasticsearch in here, this can be done at the Database level it self.
+					if($zipCode != "" && $miles != ""){
+						if(!$SearchServiceObj->doesFallWithInMileRangeUsingZipCodes($zipCode,"23508",$miles)){ // with in range
+							continue;
+						}
+					}
+
 		            // $resultSet[]= $eachRow;
 		            $getVehicleMetaDataQuery = $queries->getVehicleMetaData($eachRow['id']);
 		            $vehicleMetaDataQueryResult = $conn->query($getVehicleMetaDataQuery);
@@ -60,19 +76,7 @@
 					}
 
 
-
 					$vehicle = new Vehicle($eachRow['id'],$eachRow['year'],$eachRow['make'],$eachRow['model'],$eachRow['milesDriven'],$eachRow['price'],$eachRow['vehicleType'],$eachRow['description'],$metaDataList,$imagesList);
-
-
-					// filterting the vehicles based on miles and zipcode, happening at serverside, If we use NoSQL like elasticsearch in here, this can be done at the Database level it self.
-					if($zipCode != "" && $miles != ""){
-						if(){ // with in range
-
-						}
-					}else{
-						$resultSet[]= $vehicle; //though the Zip is given and Miles aren't given, all the vehicles are shown
-					}
-
 					$resultSet[]= $vehicle; 
 					
 		      }
@@ -85,16 +89,7 @@
 		}
 
 
-		function doesFallWithInRangeUsingZipCodes($from,$to,$miles){
-			$url='http://www.zipcodeapi.com/rest/JLXi98W5gX428RfOFL1sF7tjBpGhLt5xxUfS5NW7I1q4Axhotojpy3R7OuMkGIF1/distance.json/'.$from.'/'.$to.'/miles';
- 			file_get_contents($url);
- 			if( ){
- 				return false;
- 			}else{
- 				return true;
- 			}
 
-		}
 
 
 		// this has to be modified that the same method is called for both Manatory and additional ones
@@ -153,6 +148,21 @@
 		  $conn->close();
 		  return $resultSet;
 		}
+
+
+		public function doesFallWithInMileRangeUsingZipCodes($from,$to,$miles){
+			$url='http://www.zipcodeapi.com/rest/JLXi98W5gX428RfOFL1sF7tjBpGhLt5xxUfS5NW7I1q4Axhotojpy3R7OuMkGIF1/distance.json/'.$from.'/'.$to.'/miles';
+ 			$resultDistObj = file_get_contents($url);
+ 			$distance = Json_decode($resultDistObj,true)['distance'];
+
+ 			if($distance > intval($miles)){
+ 				return false;
+ 			}else{
+ 				return true;
+ 			}
+
+		}
+
 
 
 		public function getSpecificSellerId($vehicleId)

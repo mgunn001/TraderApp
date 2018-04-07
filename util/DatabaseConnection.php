@@ -4,15 +4,15 @@ class DatabaseConnection
 
 // Database details
 //for Remote
-    // private $host = "handson-mysql";
-    // private $db_name = "Trader";
-    // private $username = "user";
-    // private $password = "handson1234";
-
-    private $host = "localhost";
+    private $host = "handson-mysql";
     private $db_name = "Trader";
-    private $username = "root";
-    private $password = "";
+    private $username = "user";
+    private $password = "handson1234";
+
+    // private $host = "localhost";
+    // private $db_name = "Trader";
+    // private $username = "root";
+    // private $password = "";
 
 
     public function getConnection(){
