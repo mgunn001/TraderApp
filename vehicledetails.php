@@ -115,11 +115,11 @@
                 </div>'; 
 
                 $htmlContent .=' <div class="col-lg-3">
-                    <div class="row vehicle-main-details"> 
+                    <div class="row vehicle-main-details" vehicleid="'.$vehicle->getId() .'"> 
                       <ul>
                         <li> <h3><span class="price"> $'.$vehicle->getPrice().' </span></h3></li>
                         <li><span class="make">'.$vehicle->getMake().'</span> <span class="model">'.$vehicle->getModel().'</span> <span class="year">('.$vehicle->getYear().')</span></li>
-                        <li> <input type="button" class="btn btn-primary" value="Email Seller" sellerid="'.$sellerId.'"/></li>
+                        <li> <input type="button" class="btn btn-primary emailSellerBtn" data-toggle="modal" data-target="#emailSellerModal" value="Email Seller" sellerid="'.$sellerId.'"/></li>
                       </ul>
 
                     </div>
@@ -186,8 +186,8 @@
                 // $search_service = new SearchService();
                 // $resultObj= $search_service->getASpecificVehicle($_GET['vehicleID']);
                 // $vehicle = $resultObj[0];
-                //                 // echo $vehicle->getId();
-                         // $sellerId=$search_service->getSpecificSellerId($vehicle->getId());
+                // echo $vehicle->getId();
+                // $sellerId=$search_service->getSpecificSellerId($vehicle->getId());
                 //echo var_dump($vehicle->getImages());
                 $sellerCommentsObj= $search_service->getSellerComments($sellerId);
                 constructSellerReviewsHTML($sellerCommentsObj);
@@ -212,6 +212,67 @@
       </div>
     </div>
   </div>
+
+  <div class="modal fade emailSellerModal" id="emailSellerModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Email Seller</h4>
+        </div>
+        <div class="modal-body">
+          <textarea class="mail-body-seller" name="mailbody" placeholder="Enter mail body here"></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary sendEmailBtn" data-dismiss="modal">Send</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+
+      <div class="modal fade" id="successModal" role="dialog">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Success</h4>
+              </div>
+              <div class="modal-body">
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+              </div>
+            </div>
+          </div>
+      </div>
+
+
+      <div class="modal fade" id="errorModal" role="dialog">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Error</h4>
+              </div>
+              <div class="modal-body">
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+              </div>
+            </div>
+          </div>
+      </div>
+
+      <div id="wholebody_loader" class="busy-loader" style="display: none;"></div>
+
+
 </body>
 </html>
 

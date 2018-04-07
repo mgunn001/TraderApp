@@ -175,9 +175,8 @@
 		  $sellerQueryResult = $conn->query($getSellerQuery);
 		  
 		  if ($sellerQueryResult->num_rows > 0) {
-
 		      while($eachRow = $sellerQueryResult->fetch_assoc()) {
-		      	return $eachRow['sellerId'];
+		      	return $eachRow['zipcode'];
 		      }
 		    }
 		    else
@@ -215,7 +214,7 @@
 
 		public function writeSellerComments($sellerId,$buyerId,$comment)
 		{
-			 $database_connection = new DatabaseConnection();
+		  $database_connection = new DatabaseConnection();
 		  $conn = $database_connection->getConnection();
 		   $sellerId=mysqli_real_escape_string($conn,$sellerId);
 		   $buyerId=mysqli_real_escape_string($conn,$buyerId);
@@ -240,7 +239,7 @@
 		  $resultSet = [];
 		  $database_connection = new DatabaseConnection();
 		  $conn = $database_connection->getConnection();
-		   $vehicleId=mysqli_real_escape_string($conn,$vehicleId);
+		  $vehicleId=mysqli_real_escape_string($conn,$vehicleId);
 		  $queries = new Queries();
 		  $getVehicleQuery = $queries->getASpecificVehicleQuery($vehicleId);
 		  $vehicleQueryResult = $conn->query($getVehicleQuery);

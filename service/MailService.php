@@ -13,13 +13,19 @@
 	{
 		public function mailSeller($sellerId,$vehicleId,$buyerId,$mailBody)
 		{
-// getSellerDetails($sellerId)
+			// getSellerDetails($sellerId)
 			// getBuyerDetails($buyerId)
 			// getASpecificVehicleQuery($vehicleId)
 
-			$database_connection = new DatabaseConnection();
+		  $database_connection = new DatabaseConnection();
 		  $conn = $database_connection->getConnection();
 		  $queries = new Queries();
+		  $sellerId= mysqli_real_escape_string($conn,$sellerId);;
+		  $vehicleId = mysqli_real_escape_string($conn,$vehicleId);;
+		  $buyerId = mysqli_real_escape_string($conn,$buyerId);;
+		  $mailBody = mysqli_real_escape_string($conn,$mailBody);;
+
+
 		  $getVehicleQuery = $queries->getASpecificVehicleQuery($vehicleId);
 		  $vehicleQueryResult = $conn->query($getVehicleQuery);
 		  $vehicleDetailsStr='Vehcile Details: <br />';
@@ -58,8 +64,8 @@
 		      while($eachRow = $buyerQueryResult->fetch_assoc()) {
 					
 		      		$buyerDetailsStr.='Name: '.$eachRow['buyerName'].' <br />';
-		      		$buyerDetailsStr.='Email: '.$eachRow['buyerPhoneNumber'].' <br />';
-		      		$buyerDetailsStr.='Phone Number: '.$eachRow['buyerEmail'].' <br />';
+		      		$buyerDetailsStr.='Email: '.$eachRow['buyerEmail'].' <br />';
+		      		$buyerDetailsStr.='Phone Number: '.$eachRow['buyerPhoneNumber'].' <br />';
 		      }
 			} else {
 			    return 'fail';
@@ -75,8 +81,7 @@
 
 		      $mail->Username = 'studentrecruitment.csodu@gmail.com';
 		      $mail->Password = 'Srts@123';
-		       $mail->SMTPSecure= 'tls';
-
+		      $mail->SMTPSecure= 'tls';
 
 		      $mail->setFrom("studentrecruitment.csodu@gmail.com","Trader");
 		      $mail->AddAddress($sellerEmailId);     // Add a recipient
@@ -84,16 +89,14 @@
 
 		      $mail->Subject = 'New buyer for the car open for selling';
 
-		      $mail->Body    =" A person is interested in the vehicle posted by you. <br />".$vehicleDetailsStr."<br />".$buyerDetailsStr."<br /> Message from buyer '".$mailBody."'";
+		      $mail->Body    =" A person is interested in the vehicle posted by you. <br />".$vehicleDetailsStr."<br />".$buyerDetailsStr."<br /> Message from buyer: '".$mailBody."'";
 
 		      // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
  
 		      if(!$mail->Send()){
-
-		        return false;
-		      }else{
-		      	echo "Sending email";
-		        return true;
+		        return "fail";
+		      }else{	      	
+		        return "success";
 		      }
 
 		}

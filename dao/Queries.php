@@ -36,12 +36,12 @@
 	      return $sql;
 	    }
 	    public function getSellerId($vehicleId){
-	      $sql = 'SELECT * FROM `postedvehicles` where id='.$vehicleId  ;
+	      $sql = 'SELECT * FROM `postedvehicles` where id='.$vehicleId;
 	      return $sql;
 	    }
 
 	     public function getSellerZip($vehicleId){
-	      $sql = "SELECT selleraddress.zipcode FROM `postedvehicles`,`postedvehicles`,`postedvehicles` where id=".$vehicleId  ;
+	      $sql = "SELECT selleraddress.zipcode FROM `postedvehicles`,`sellerdetails`,`selleraddress` where postedvehicles.sellerId=sellerdetails.id and sellerdetails.sellerAddress=selleraddress.id  and  postedvehicles.id=".$vehicleId  ;
 	      return $sql;
 	    }
 
