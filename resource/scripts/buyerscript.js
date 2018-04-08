@@ -177,7 +177,7 @@ function start()
 	                $(".userSuggList").click(function(){
 	                	$('.keyword-identifier-vehicle').val($(this).html());
 	                	$(".resSuggDiv").remove();
-                       $(".busy-loader").show();
+                       $(".busy-loader").hide();
 	                });
            		}
 
