@@ -259,7 +259,7 @@
 							  </ul>
 						  </div>
 
-						  <input type="submit" title="Click to apply filters" class="btn btn-default applyFiltersBtn" />
+						  <input type="submit" value="Apply Filters" title="Click to apply filters" class="btn btn-default applyFiltersBtn" />
 					</form>
 				</div>
 			</div>';

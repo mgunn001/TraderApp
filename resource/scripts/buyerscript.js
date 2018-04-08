@@ -37,17 +37,26 @@ function start()
 
 		uiInitialisations();
 
-
-		
-
 		$(document).on("click",".applyFiltersBtn",function(e){
-         
+         	e.preventDefault();
+
          	var filterInputObj={};
          	filterInputObj["vehicleTypeId"] = $(".vehicleTypeSel").val();
          	filterInputObj["keyword"] = $(".keyword-identifier-vehicle").val();
-         	
 
+         	var additionalFilterAttrArr=['price','mileage','make','model','body','color','transmission'];
 
+         	for(i=0;i<additionalFilterAttrArr.length;i++){
+         		var vauesArr = [];
+
+				$('input[name="'+additionalFilterAttrArr[i]+'_checkedList[]"]:checked').each(function() {
+				    vauesArr.push($(this).val());
+				});
+				filterInputObj[additionalFilterAttrArr[i]] = vauesArr;
+         	}
+         	console.log(filterInputObj);
+
+         	//filterInputObj["price"] = $(".keyword-identifier-vehicle").val();
 
         });
 
@@ -116,7 +125,7 @@ function start()
 				var modelArry = vehicleMakeAndModel[curVehicleType][curMake];
 	    		  modelTypeCheckBoxListHTML +='<li class="dropdown-header">'+curMake+'</li>';
 	    		for(var j=0;j<modelArry.length;j++){
-		    		modelTypeCheckBoxListHTML += '<li> <a href="#"><label>'+modelArry[j]+'<input type="checkbox" name="body_checkedList[]" relmake="'+ curMake+'" value="'+modelArry[j]+'"> </label></a></li>';
+		    		modelTypeCheckBoxListHTML += '<li> <a href="#"><label>'+modelArry[j]+'<input type="checkbox" name="model_checkedList[]" relmake="'+ curMake+'" value="'+modelArry[j]+'"> </label></a></li>';
 		    	}
 		    	modelTypeCheckBoxListHTML +='<li class="divider"></li>';
 			}
