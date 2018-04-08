@@ -54,9 +54,9 @@
         //echo "Echoing details for vehicle with ID: -> ".$_GET['vehicleID'];
         $search_service = new SearchService();
         $resultObj= $search_service->getASpecificVehicle($_GET['vehicleID']);
+
         $vehicle = $resultObj[0];
-                        // echo $vehicle->getId();
-                 $sellerId=$search_service->getSpecificSellerId($vehicle->getId());
+        $sellerId=$search_service->getSpecificSellerId($vehicle->getId());
         //echo var_dump($vehicle->getImages());
         constructVehicleDetailsHTML($vehicle,$sellerId);
       }     
@@ -75,8 +75,13 @@
                     <div id="myCarousel" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">';
           $imagesList = $vehicle->getImages();
-          // echo var_dump($imagesList);
-          // return;
+          
+          if(count($imagesList) == 0){
+            $imagesList[]= 'http://sifatit.com/wp-content/uploads/2012/07/dummy.jpg';
+          }
+
+
+
           $i=0;
            foreach ($imagesList as $image){
              if($i==0){
@@ -125,23 +130,33 @@
                       </ul>
 
                     </div>
+
                     <div class="row vehicle-entire-details-list">
-                      <h3> Vehicle Details </h3>
-                      <table class="table table-striped">
-                        <tbody>';
+                      <h3> Vehicle Details </h3> ';
+
+                      
                   $metaDataList = $vehicle->getMetaData();
 
-                foreach ($metaDataList as  $metaDataObj ){
-                        $htmlContent .='<tr>
-                            <td class="attribute">'.htmlspecialchars($metaDataObj->getProperty()).'</td>
-                            <td class="value">'.htmlspecialchars($metaDataObj->getPropertyValue()).'</td>
-                          </tr>';
-                 }
 
-                $htmlContent .='</tbody>
-                                </table>
+                  if(count($metaDataList) == 0){
+                       $htmlContent .='No meta present';
+                  }else{
+                    $htmlContent .='<table class="table table-striped">
+                        <tbody>';
+                  foreach ($metaDataList as  $metaDataObj ){
+                          $htmlContent .='<tr>
+                              <td class="attribute">'.htmlspecialchars($metaDataObj->getProperty()).'</td>
+                              <td class="value">'.htmlspecialchars($metaDataObj->getPropertyValue()).'</td>
+                            </tr>';
+                   }
 
-                               </div>
+                  $htmlContent .='</tbody>
+                                </table>';
+                  }
+
+                  
+
+                $htmlContent .='</div>
                           </div>
                   </div>
               </div>

@@ -83,13 +83,13 @@
 					  </div>
 
 					  <div class="form-group">
-					    <input type="text" class="form-control keyword-identifier-vehicle" placeholder="Keyword" title="Enter keyword for vehicle" name="keyword" id="keywordIP">
+					    <input type="text" class="form-control keyword-identifier-vehicle" autocomplete="off"  placeholder="Keyword" title="Enter keyword for vehicle" name="keyword" id="keywordIP">
 					  </div>
 					  <div class="form-group">		  
-					    <input type="text" class="form-control zip-code" placeholder="Zip Code" title="Enter Zip Code" name="zipCode" id="zipcode">
+					    <input type="text" class="form-control zip-code" autocomplete="off" placeholder="Zip Code" title="Enter Zip Code" name="zipCode" id="zipcode">
 					  </div>
 					  <div class="form-group">		  
-					    <input type="text" class="form-control within-miles" placeholder="50 Miles" name="miles" title="look with in miles" id="withinmiles">
+					    <input type="text" class="form-control within-miles" autocomplete="off" placeholder="50 Miles" name="miles" title="look with in miles" id="withinmiles">
 					  </div>
 					  <button type="submit" title="Click to Search" class="btn btn-default">Search</button>
 				</form>
@@ -113,13 +113,13 @@
 					  </div>
 
 					  <div class="form-group">
-					    <input type="text" class="form-control keyword-identifier-vehicle" placeholder="Keyword" title="Enter keyword for vehicle" name="keyword" id="keywordIP" value="'.htmlspecialchars($keyword).'">
+					    <input type="text" class="form-control keyword-identifier-vehicle" autocomplete="off" placeholder="Keyword" title="Enter keyword for vehicle" name="keyword" id="keywordIP" value="'.htmlspecialchars($keyword).'">
 					  </div>
 					  <div class="form-group">		  
-					    <input type="text" class="form-control zip-code" placeholder="Zip Code" title="Enter Zip Code" name="zipCode" id="zipcode" value='.$zipcode.'>
+					    <input type="text" class="form-control zip-code" autocomplete="off" placeholder="Zip Code" title="Enter Zip Code" name="zipCode" id="zipcode" value='.$zipcode.'>
 					  </div>
 					  <div class="form-group">		  
-					    <input type="text" class="form-control within-miles" placeholder="50 Miles" name="miles" title="look with in miles" id="withinmiles" value='.$miles.'>
+					    <input type="text" class="form-control within-miles" autocomplete="off" placeholder="50 Miles" name="miles" title="look with in miles" id="withinmiles" value='.$miles.'>
 					  </div>
 					  <button type="submit" title="Click to Search" class="btn btn-default">Search</button>
 				</form>
@@ -152,7 +152,7 @@
       function constructFiltersToDisplay(){
       	echo '<div class="container-fluid additional-filter-items-wrapper additional-filter-items well" style="margin-top:-1%;">
 				<div class="additional-filter-items">
-					<form class="form-inline additional-filter-items-form" name="additionalFilters"  action="dummy.php" method="post">
+					<form class="form-inline additional-filter-items-form" name="additionalFilters"  action="#" method="post">
 						  <input type="hidden" name="additionalFilterSubmit" value="true"></input>
 						  <div class="form-group dropdown price-dropdown">
 							  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Price
@@ -259,7 +259,7 @@
 							  </ul>
 						  </div>
 
-						  <button type="submit" title="Click to apply filters" class="btn btn-default">Apply Filters</button>
+						  <input type="submit" title="Click to apply filters" class="btn btn-default applyFiltersBtn" />
 					</form>
 				</div>
 			</div>';

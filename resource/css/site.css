@@ -121,8 +121,8 @@
   }
 
   .reviewtext-container{
-    height: 60px;
-    border: 0.5px solid blue;
+    border-bottom: 0.5px solid gray;
+    margin-left: -2%;
   }
 
   .carousel-description-wrapper,.vehicle-entire-details-list{

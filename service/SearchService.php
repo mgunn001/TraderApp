@@ -292,7 +292,7 @@
 		  $queries = new Queries();
 		  $getVehicleQuery = $queries->getASpecificVehicleQuery($vehicleId);
 		  $vehicleQueryResult = $conn->query($getVehicleQuery);
-		  // echo $getVehicleQuery;
+
 		  if ($vehicleQueryResult->num_rows > 0) {
 
 		      while($eachRow = $vehicleQueryResult->fetch_assoc()) {
@@ -309,10 +309,8 @@
 								$metaDataList[]=$metaData;			            
 
 					      }
-					} else {
-					    return 'fail';
 					}
-
+					
 					$getVehicleImagesQuery = $queries->getVehicleImages($eachRow['id']);
 		            $vehicleImagesQueryResult = $conn->query($getVehicleImagesQuery);
 		            $imagesList=[];
@@ -322,16 +320,13 @@
 								$imagesList[]=$imageEachRow['Path'];			            
 
 					      }
-					} else {
-					    return 'fail';
-					}
-
+					} 
 					$vehicle = new Vehicle($eachRow['id'],$eachRow['year'],$eachRow['make'],$eachRow['model'],$eachRow['milesDriven'],$eachRow['price'],$eachRow['vehicleType'],$eachRow['description'],$metaDataList,$imagesList);
 					$resultSet[]= $vehicle;
 
 		      }
 		  } else {
-		      return 'fail';
+		      return null;
 		  }
 		  $conn->close();
 		  return $resultSet;

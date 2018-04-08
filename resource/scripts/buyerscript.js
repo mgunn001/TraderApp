@@ -38,6 +38,20 @@ function start()
 		uiInitialisations();
 
 
+		
+
+		$(document).on("click",".applyFiltersBtn",function(e){
+         
+         	var filterInputObj={};
+         	filterInputObj["vehicleTypeId"] = $(".vehicleTypeSel").val();
+         	filterInputObj["keyword"] = $(".keyword-identifier-vehicle").val();
+         	
+
+
+
+        });
+
+
 		// to get the dropup action on the hover instood of click
         $(document).on("mouseover",".additional-filter-items-form .dropdown-toggle",function(e){
         	$(this).trigger("click");	
