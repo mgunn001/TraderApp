@@ -106,7 +106,7 @@
 		  }
 		 
 		  $getVehiclesQuery = $queries->getVehiclesByApplingAllFiltersQuery($inputObj);
-			//return $getVehiclesQuery;
+		//return $getVehiclesQuery;
 		  
 		  $vehiclesQueryResult = $conn->query($getVehiclesQuery);
 		  $SearchServiceObj = new SearchService();

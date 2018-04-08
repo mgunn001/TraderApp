@@ -23,22 +23,47 @@
 
 	    	$priceArry = explode(",",$inputObj["price"]);
 	    	if($inputObj["price"] != ""){
-	    			$priceIndex =  intval($priceArry[0]);
+	    		$sql.=' and (';
+	    		for($i=0;$i< count($priceArry); $i++){
+	    			if($i != 0){
+	    				$sql.= ' or ';
+	    			}
+	    			$priceIndex =  intval($priceArry[$i]);
 	    			$minPrice = (($priceIndex-1)*5) *1000;
 	    			$maxPrice = ($priceIndex *5) *1000;
-	    			$sql.=' and postedvehicles.price >'. $minPrice .' and postedvehicles.price <= '. $maxPrice;
+	    			$sql.='( postedvehicles.price >'. $minPrice .' and postedvehicles.price <= '. $maxPrice.')';
+	    		}
+	    		$sql.=' ) ';
 	    	}
 
 	    	
+		    // $mileageArry = explode(",",$inputObj["mileage"]);
+
+		    // if( $inputObj["mileage"] != ""){
+		    // 	$mileageIndex =  intval($mileageArry[0]);
+		    // 	$minMileage = (($mileageIndex-1)*5) *1000;
+		    // 	$maxMileage = ($mileageIndex *5) *1000;
+		    // 	$sql.=' and postedvehicles.milesDriven >'. $minMileage .' and postedvehicles.milesDriven <= '. $maxMileage;
+
+		    // }
+
 		    $mileageArry = explode(",",$inputObj["mileage"]);
+	    	if($inputObj["mileage"] != ""){
+	    		$sql.=' and (';
+	    		for($i=0;$i< count($mileageArry); $i++){
+	    			if($i != 0){
+	    				$sql.= ' or ';
+	    			}
+	    			$mileageIndex =  intval($mileageArry[$i]);
+	    			$minMileage = (($mileageIndex-1)*5) *1000;
+		    		$maxMileage = ($mileageIndex *5) *1000;
+	    			$sql.='( postedvehicles.milesDriven >'. $minMileage .' and postedvehicles.milesDriven <= '. $maxMileage.')';
+	    		}
+	    		$sql.=' ) ';
+	    	}
 
-		    if( $inputObj["mileage"] != ""){
-		    	$mileageIndex =  intval($mileageArry[0]);
-		    	$minMileage = (($mileageIndex-1)*5) *1000;
-		    	$maxMileage = ($mileageIndex *5) *1000;
-		    	$sql.=' and postedvehicles.milesDriven >'. $minMileage .' and postedvehicles.milesDriven <= '. $maxMileage;
 
-		    }
+
 
 	    	
 	    	$makeArry = explode(",",$inputObj["make"]);
