@@ -19,7 +19,7 @@
 	      // this one to be replaced with a stored proc, so as to filter based on meta data aswell 
 	    public function getVehiclesByApplingAllFiltersQuery($inputObj){
 
-	    	$sql = 'SELECT * FROM `postedvehicles`,`tagsonpostedvehicles`,`helpertags` where tagsonpostedvehicles.helpertagid=helpertags.helpertagid and helpertags.vehicletypeid='.$inputObj["vehicleTypeId"].' and helpertags.keyword="'.$inputObj["keyword"].'" and tagsonpostedvehicles.vehicleid=postedvehicles.id'; 
+	    	$sql = 'SELECT distinct postedvehicles.* FROM `postedvehicles`,`tagsonpostedvehicles`,`helpertags` where tagsonpostedvehicles.helpertagid=helpertags.helpertagid and helpertags.vehicletypeid='.$inputObj["vehicleTypeId"].' and helpertags.keyword="'.$inputObj["keyword"].'" and tagsonpostedvehicles.vehicleid=postedvehicles.id'; 
 
 	    	$priceArry = explode(",",$inputObj["price"]);
 	    	if($inputObj["price"] != ""){
@@ -41,7 +41,6 @@
 		    }
 
 	    	
-
 	    	$makeArry = explode(",",$inputObj["make"]);
 	    	if( $inputObj["make"] != ""){
 	    		$makeList = join('","',$makeArry);
@@ -67,6 +66,8 @@
 	    				$sql.=' and postedvehicles.year BETWEEN 2008 and 2018';
 	    			}
 	    	}
+
+
 
 		    return $sql;
 
