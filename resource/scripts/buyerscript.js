@@ -37,9 +37,7 @@ function start()
 
 		uiInitialisations();
 
-		$(document).on("click",".applyFiltersBtn",function(e){
-         	e.preventDefault();
-
+		 $(document).on("change",".additional-filter-items-form input[type=checkbox]",function(e){         	
          	var filterInputObj={};
          	filterInputObj["vehicleTypeId"] = $(".vehicleTypeSel").val();
          	filterInputObj["keyword"] = $(".keyword-identifier-vehicle").val();
@@ -52,11 +50,18 @@ function start()
 				$('input[name="'+additionalFilterAttrArr[i]+'_checkedList[]"]:checked').each(function() {
 				    vauesArr.push($(this).val());
 				});
+
+				if(vauesArr.length ==0){
+					vauesArr ='';
+				}
 				filterInputObj[additionalFilterAttrArr[i]] = vauesArr;
          	}
          	console.log(filterInputObj);
-
-         	//filterInputObj["price"] = $(".keyword-identifier-vehicle").val();
+         	$(".busy-loader").show();
+         	$.post('./HomeController.php',filterInputObj,function (data){
+				$(".filtered-vehicles-wrapper").html(data);
+				$(".busy-loader").hide();
+			});
 
         });
 

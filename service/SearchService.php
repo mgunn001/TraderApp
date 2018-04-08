@@ -25,10 +25,10 @@
 		   $miles= mysqli_real_escape_string($conn,$miles);
 
 		  $queries = new Queries();
-		$getVehiclesQuery = $queries->getVehiclesByMandateFiltersQuery($vehicleType, $keyword, $zipCode,$miles);
+		  $getVehiclesQuery = $queries->getVehiclesByMandateFiltersQuery($vehicleType, $keyword, $zipCode,$miles);
 		 // $getVehiclesQuery = $queries->getAllVehiclesQuery();
-	   // echo $getVehiclesQuery;
-	  // return;
+		   // echo $getVehiclesQuery;
+		  // return;
 		  $vehiclesQueryResult = $conn->query($getVehiclesQuery);
 		  
 		  if ($vehiclesQueryResult!=null &&  $vehiclesQueryResult->num_rows > 0) {
@@ -71,6 +71,10 @@
 				      }
 					} 
 
+					if(count($imagesList) == 0){
+						$imagesList[] = 'http://sifatit.com/wp-content/uploads/2012/07/dummy.jpg';
+					}
+
 					$vehicle = new Vehicle($eachRow['id'],$eachRow['year'],$eachRow['make'],$eachRow['model'],$eachRow['milesDriven'],$eachRow['price'],$eachRow['vehicleType'],$eachRow['description'],$metaDataList,$imagesList);
 					$resultSet[]= $vehicle; 
 					
@@ -87,21 +91,24 @@
 
 
 
-		// this has to be modified that the same method is called for both Manatory and additional ones
-		public function getVehiclesByApplyingAllFilters()
+		// this has to be modified that the same method can be  called for both Manatory and additional ones
+		public function getVehiclesByApplyingAllFilters($inputObj)
 		{
-		   $resultSet = [];
+		  $resultSet = [];
 		  $database_connection = new DatabaseConnection();
 		  $conn = $database_connection->getConnection();
 		  $queries = new Queries();
-		  $getVehiclesQuery = $queries->getAllVehiclesQuery();
+
+		  $getVehiclesQuery = $queries->getVehiclesByMandateFiltersQuery($inputObj["vehicleTypeId"], $inputObj["keyword"], "23508","50");
+		  // to be replaced with StoredProc Call
+		  //$getVehiclesQuery = $queries->getAllVehiclesQuery();
 		  $vehiclesQueryResult = $conn->query($getVehiclesQuery);
-		  
+		  $SearchServiceObj = new SearchService();
 		  if ($vehiclesQueryResult->num_rows > 0) {
+		  	
 
 		      while($eachRow = $vehiclesQueryResult->fetch_assoc()) {
 		            // $resultSet[]= $eachRow;
-
 
 		            $getVehicleMetaDataQuery = $queries->getVehicleMetaData($eachRow['id']);
 		            $vehicleMetaDataQueryResult = $conn->query($getVehicleMetaDataQuery);
@@ -113,9 +120,7 @@
 								$metaDataList[]=$metaData;			            
 
 					      }
-					} else {
-					    return null;
-					}
+					} 
 
 					$getVehicleImagesQuery = $queries->getVehicleImages($eachRow['id']);
 		            $vehicleImagesQueryResult = $conn->query($getVehicleImagesQuery);
@@ -126,24 +131,81 @@
 								$imagesList[]=$imageEachRow['Path'];			            
 
 					      }
-					} else {
-					    return null;
+					} 
+
+					if(count($imagesList) == 0){
+						$imagesList[] = 'http://sifatit.com/wp-content/uploads/2012/07/dummy.jpg';
 					}
 
 					$vehicle = new Vehicle($eachRow['id'],$eachRow['year'],$eachRow['make'],$eachRow['model'],$eachRow['milesDriven'],$eachRow['price'],$eachRow['vehicleType'],$eachRow['description'],$metaDataList,$imagesList);
 					$resultSet[]= $vehicle;
 
-
-
 		      }
-		  } else {
-
-		      return null;
-		  }
+		  } 
 		  $conn->close();
-		  return $resultSet;
+		  return $SearchServiceObj -> constructFilteredVehicleListingHTML($resultSet);
 		}
 
+
+		public function constructFilteredVehicleListingHTML($vehiclesListing)
+		{
+			$SearchServiceObj = new SearchService();
+			$htmlContent ='';
+
+	      	if( count($vehiclesListing) < 1 || $vehiclesListing == null){
+	      		$htmlContent .='<h2 style="text-align:center;""> No Vehicles found </h2>';
+	      		return $htmlContent;
+	      	}
+	      
+	      	// $htmlContent .= '<div class="row filters-applied-wrapper"> <h4>Applied filters go here</h4></div><br/>';
+	      	// $htmlContent .= '<div class="container-fluid filtered-results text-center"> 
+								// <div class="row filtered-vehicles-wrapper">';
+
+			foreach ($vehiclesListing as $vehicle){
+	            $htmlContent .= '<div class="col-sm-6 col-lg-3">
+		        <div class="card" carid="'.htmlspecialchars($vehicle->getId()).'">';
+		        $firstImgSrc = null;
+		        if(count($vehicle->getImages()) >0 ){
+		        	  $firstImgSrc = $vehicle->getImages()[0];
+		        }
+		        if( $firstImgSrc == null){
+		        	$firstImgSrc = 'http://sifatit.com/wp-content/uploads/2012/07/dummy.jpg';
+		        }
+		        $htmlContent .= '<img class="card-img-top" src="'. htmlspecialchars($firstImgSrc).'">';
+	         	$htmlContent .= '<div class="card-block">
+		                <h4 class="card-title mt-3"><a href="./vehicledetails.php?vehicleID='.htmlspecialchars($vehicle->getId()).'"><span class="make">'.htmlspecialchars($vehicle->getMake()).'</span><span class="model">'.htmlspecialchars($vehicle->getModel()).'</span><span class="year">('.htmlspecialchars($vehicle->getYear()).')</span></a></h4>';
+		         $propsToShowOnCard=['owners','fuel'];
+
+		        $htmlContent .='<div class="card-text">
+		                	<ul>
+		                		<li> <span class="price" style="font-weight: bold">$'.htmlspecialchars($vehicle->getPrice()).'</span></li>
+		                		<li> <span class="mileage">'.htmlspecialchars($vehicle->getMilesDriven()) .'Miles</span>'. $SearchServiceObj -> getSpecificAttributeFromMetaData($vehicle->getMetaData(),$propsToShowOnCard) .'</li>
+		                	</ul>
+		                	</div>
+							</div>
+							            <div class="card-footer">
+							                <small>click to know more info and contact seller</small>
+							                <button class="btn btn-primary float-right btn-sm">More Info</button>
+							            </div>
+							        </div>
+							    </div>';
+	       }
+
+	   		// $htmlContent .='</div></div>';
+	   		return $htmlContent;
+     	}
+
+
+          // this method deals with fetching the imp props and value that are decided to be shown on the card
+	    public function getSpecificAttributeFromMetaData($metaDataList, $propList){
+	 		$htmlPropSpanToReturn = '';
+	 		foreach ($metaDataList as $metaData){
+	 			if(in_array(strtolower($metaData -> getProperty()) , $propList)){
+	 				$htmlPropSpanToReturn.= '<span class="divider">|</span><span class="'.htmlspecialchars($metaData -> getProperty()).'">'.htmlspecialchars($metaData -> getProperty()).':&nbsp;'.htmlspecialchars($metaData -> getPropertyValue()).'</span>';
+	 			}
+	 		}
+	 		return $htmlPropSpanToReturn;
+	     }
 
 		public function doesFallWithInMileRangeUsingZipCodes($from,$to,$miles){
 			// $url='http://www.zipcodeapi.com/rest/JLXi98W5gX428RfOFL1sF7tjBpGhLt5xxUfS5NW7I1q4Axhotojpy3R7OuMkGIF1/distance.json/'.$from.'/'.$to.'/miles';

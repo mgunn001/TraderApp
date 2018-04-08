@@ -272,7 +272,7 @@
       	}
       	$htmlContent ='';
 
-      	$htmlContent .= '<div class="row filters-applied-wrapper"> <h4>Applied filters go here</h4></div><br/>';
+      	// $htmlContent .= '<div class="row filters-applied-wrapper"> <h4>Applied filters go here</h4></div><br/>';
       	$htmlContent .= '<div class="container-fluid filtered-results text-center"> 
 							<div class="row filtered-vehicles-wrapper">';
 
@@ -323,5 +323,42 @@
 
   ?>
 <div class="resSuggDiv" style="position: absolute;"></div>
+ <div class="modal fade" id="successModal" role="dialog">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Success</h4>
+              </div>
+              <div class="modal-body">
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+              </div>
+            </div>
+          </div>
+      </div>
+
+
+      <div class="modal fade" id="errorModal" role="dialog">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Error</h4>
+              </div>
+              <div class="modal-body">
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+              </div>
+            </div>
+          </div>
+      </div>
+
+      <div id="wholebody_loader" class="busy-loader" style="display: none;"></div>
+
 </body>
 </html>

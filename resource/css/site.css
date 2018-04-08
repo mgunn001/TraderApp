@@ -184,3 +184,7 @@
 .filtered-vehicles-wrapper .card-text ul{
   margin-left: -15%;
 }
+
+.applyFiltersBtn{
+  display: none;
+}
