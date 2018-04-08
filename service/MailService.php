@@ -16,15 +16,15 @@
 			// getSellerDetails($sellerId)
 			// getBuyerDetails($buyerId)
 			// getASpecificVehicleQuery($vehicleId)
-
+// echo 'hiiii111';
 		  $database_connection = new DatabaseConnection();
 		  $conn = $database_connection->getConnection();
 		  $queries = new Queries();
-		  $sellerId= mysqli_real_escape_string($conn,$sellerId);;
-		  $vehicleId = mysqli_real_escape_string($conn,$vehicleId);;
-		  $buyerId = mysqli_real_escape_string($conn,$buyerId);;
-		  $mailBody = mysqli_real_escape_string($conn,$mailBody);;
-
+		  $sellerId= mysqli_real_escape_string($conn,$sellerId);
+		  $vehicleId = mysqli_real_escape_string($conn,$vehicleId);
+		  $buyerId = mysqli_real_escape_string($conn,$buyerId);
+		  $mailBody = mysqli_real_escape_string($conn,$mailBody);
+// echo $mailBody;
 
 		  $getVehicleQuery = $queries->getASpecificVehicleQuery($vehicleId);
 		  $vehicleQueryResult = $conn->query($getVehicleQuery);
@@ -71,7 +71,7 @@
 			    return 'fail';
 			}
 
-
+// echo $sellerEmailId;
 			  $mail = new PHPMailer();
 		      $mail->SMTPDebug = false;                               // Enable verbose debug output
 		      $mail->Port = '587';
@@ -94,9 +94,9 @@
 		      // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
  
 		      if(!$mail->Send()){
-		        return "fail";
+		        echo "fail";
 		      }else{	      	
-		        return "success";
+		        echo "success";
 		      }
 
 		}

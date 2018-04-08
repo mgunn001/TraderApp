@@ -11,7 +11,7 @@ error_reporting(-1);
  	  $vehicleId = $_POST["vehicleid"];
  	  $buyerId = "1"; // hard coding the value as only one buyer exist
  	  $mailBody = $_POST["mailbody"];
-
+// echo $mailBody;
  	  $mail_service = new MailService();
  	  //$sellerId,$vehicleId,$buyerId,$mailBody
 	  $result= $mail_service->mailSeller($sellerId ,$vehicleId,$buyerId, $mailBody);
