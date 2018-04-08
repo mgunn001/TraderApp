@@ -188,3 +188,7 @@
 .applyFiltersBtn{
   display: none;
 }
+
+.filtered-vehicles-wrapper .col-lg-3{
+  margin-top:1%;
+}
