@@ -57,7 +57,17 @@
 
 	    	}
 
- 			
+	    	 $yearArry = explode(",",$inputObj["year"]);
+	    	if($inputObj["year"] != ""){
+	    			$yearIndex =  intval($yearArry[0]);
+	    			if($yearIndex == 1){
+	    				$sql.=' and postedvehicles.year >= 2018';
+
+	    			}else{
+	    				$sql.=' and postedvehicles.year BETWEEN 2008 and 2018';
+	    			}
+	    	}
+
 		    return $sql;
 
 	    }

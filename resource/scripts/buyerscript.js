@@ -42,7 +42,7 @@ function start()
          	filterInputObj["vehicleTypeId"] = $(".vehicleTypeSel").val();
          	filterInputObj["keyword"] = $(".keyword-identifier-vehicle").val();
 
-         	var additionalFilterAttrArr=['price','mileage','make','model','body','color','transmission'];
+         	var additionalFilterAttrArr=['price','mileage','make','model','year','body','color','transmission'];
 
          	for(i=0;i<additionalFilterAttrArr.length;i++){
          		var vauesArr = [];
