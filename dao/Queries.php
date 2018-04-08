@@ -10,8 +10,58 @@
 	    public function getVehiclesByMandateFiltersQuery($vehicleType, $keyword, $zipCode,$miles){
 	    //$sql = 'SELECT * FROM `postedvehicles` where vehicleType='.$vehicleType;
  		$sql = 'SELECT * FROM `postedvehicles`,`tagsonpostedvehicles`,`helpertags` where tagsonpostedvehicles.helpertagid=helpertags.helpertagid and helpertags.vehicletypeid='.$vehicleType.' and helpertags.keyword="'.$keyword.'" and tagsonpostedvehicles.vehicleid=postedvehicles.id';
+
 	      return $sql;
 	    }
+
+
+
+	      // this one to be replaced with a stored proc, so as to filter based on meta data aswell 
+	    public function getVehiclesByApplingAllFiltersQuery($inputObj){
+
+	    	$sql = 'SELECT * FROM `postedvehicles`,`tagsonpostedvehicles`,`helpertags` where tagsonpostedvehicles.helpertagid=helpertags.helpertagid and helpertags.vehicletypeid='.$inputObj["vehicleTypeId"].' and helpertags.keyword="'.$inputObj["keyword"].'" and tagsonpostedvehicles.vehicleid=postedvehicles.id'; 
+
+	    	$priceArry = explode(",",$inputObj["price"]);
+	    	if($inputObj["price"] != ""){
+	    			$priceIndex =  intval($priceArry[0]);
+	    			$minPrice = (($priceIndex-1)*5) *1000;
+	    			$maxPrice = ($priceIndex *5) *1000;
+	    			$sql.=' and postedvehicles.price >'. $minPrice .' and postedvehicles.price <= '. $maxPrice;
+	    	}
+
+	    	
+		    $mileageArry = explode(",",$inputObj["mileage"]);
+
+		    if( $inputObj["mileage"] != ""){
+		    	$mileageIndex =  intval($mileageArry[0]);
+		    	$minMileage = (($mileageIndex-1)*5) *1000;
+		    	$maxMileage = ($mileageIndex *5) *1000;
+		    	$sql.=' and postedvehicles.milesDriven >'. $minMileage .' and postedvehicles.milesDriven <= '. $maxMileage;
+
+		    }
+
+	    	
+
+	    	$makeArry = explode(",",$inputObj["make"]);
+	    	if( $inputObj["make"] != ""){
+	    		$makeList = join('","',$makeArry);
+	    		$sql.=' and postedvehicles.make in ("'.$makeList .'")';
+	    	}
+
+	    
+
+	    	$modelArry = explode(",",$inputObj["model"]);
+			if( $inputObj["model"] != ""){
+				$modelList = join('","',$modelArry);
+				$sql.=' and postedvehicles.model in ("'.$modelList .'")';
+
+	    	}
+
+ 			
+		    return $sql;
+
+	    }
+
 
 	    public function getASpecificVehicleQuery($vehicleId){
 	      $sql = 'SELECT * FROM `postedvehicles` where id='.$vehicleId  ;

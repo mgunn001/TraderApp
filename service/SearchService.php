@@ -99,9 +99,15 @@
 		  $conn = $database_connection->getConnection();
 		  $queries = new Queries();
 
-		  $getVehiclesQuery = $queries->getVehiclesByMandateFiltersQuery($inputObj["vehicleTypeId"], $inputObj["keyword"], "23508","50");
-		  // to be replaced with StoredProc Call
-		  //$getVehiclesQuery = $queries->getAllVehiclesQuery();
+ 		// to be replaced with StoredProc Call later
+		  // $getVehiclesQuery = $queries->getVehiclesByMandateFiltersQuery($inputObj["vehicleTypeId"], $inputObj["keyword"], "23508","50");
+		  foreach ($inputObj as $param_name => $param_val) {
+		    $inputObj[$param_name] = mysqli_real_escape_string($conn,$param_val);
+		  }
+		 
+		  $getVehiclesQuery = $queries->getVehiclesByApplingAllFiltersQuery($inputObj);
+			//return $getVehiclesQuery;
+		  
 		  $vehiclesQueryResult = $conn->query($getVehiclesQuery);
 		  $SearchServiceObj = new SearchService();
 		  if ($vehiclesQueryResult->num_rows > 0) {
@@ -207,18 +213,20 @@
 	 		return $htmlPropSpanToReturn;
 	     }
 
+	     //this method does yields the proper results, using a thirdparty service to calculate
+	     //  the distance in miles between two zipcodes, but itisn't supporting bulks request, so commiting it for now
+	     // may be could try google Map Distance  Matrix API
 		public function doesFallWithInMileRangeUsingZipCodes($from,$to,$miles){
 			// $url='http://www.zipcodeapi.com/rest/JLXi98W5gX428RfOFL1sF7tjBpGhLt5xxUfS5NW7I1q4Axhotojpy3R7OuMkGIF1/distance.json/'.$from.'/'.$to.'/miles';
- 		// 	$resultDistObj = file_get_contents($url);
- 		// 	$distance = Json_decode($resultDistObj,true)['distance'];
+	 		// 	$resultDistObj = file_get_contents($url);
+	 		// 	$distance = Json_decode($resultDistObj,true)['distance'];
 
- 		// 	if($distance > intval($miles)){
- 		// 		return false;
- 		// 	}else{
- 		// 		return true;
- 		// 	}
- 			return true;
-
+	 		// 	if($distance > intval($miles)){
+	 		// 		return false;
+	 		// 	}else{
+	 		// 		return true;
+	 		// 	}
+	 			return true;
 		}
 
 
