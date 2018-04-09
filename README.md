@@ -3,7 +3,8 @@ Developer Excersice [Live Site](http://www.cs.odu.edu/~mgunnam/TraderApp/buyerpa
 
 As a solution for the following problem - [Problem Statement](http://www.cs.odu.edu/~mgunnam/TraderApp/misc/DeveloperExercise_MaheedharGunnam.pdf)
 
-
+### Snapshot Buyer Page
+![Buyer Page](http://www.cs.odu.edu/~mgunnam/TraderApp/misc/buyerpage_screenshot.JPG)
 
 ### DataBase Schema Design
 ![DB Schema Design](http://www.cs.odu.edu/~mgunnam/TraderApp/misc/DBDesign.JPG)
