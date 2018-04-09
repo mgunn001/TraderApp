@@ -10,7 +10,7 @@ As a solution for the following problem - [Problem Statement](http://www.cs.odu.
 
 
 ### Project structure and Tech Stack Stuff
-* The porject is very well modularized and is being segregating into neat folder structure, plain PHP is used as the server and RelationalDatabase (MYSQL) is used as the DB. 
+* The porject is very well modularized and is being segregating into neat folder structure, plain PHP is used as the server and RelationalDatabase (MySQL) is used as the DB. 
 
 * All the Entity models are put up in **models** directoy, each php file in here is dedicated for an unique entity, OOPs properties like Inheritance and Abstraction are being used.
 
