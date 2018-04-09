@@ -26,7 +26,7 @@ As a solution for the following problem - [Problem Statement](http://www.cs.odu.
 ### Features Implemented and Future Enhancements
 * All the features implemented are mainly oriented towards Buyer, A Buyer will select the Vechile type and enters the Tag name(Keywords) which are auto suggested will actually ease up the search to quickly narrow down to the desired list. Filling up Zipcode and Miles radius is optional.
 
-* To filter down based on Miles radius the Zipcode input by the Buyer is used to calculate the distance with respect to the Vehicle Seller Zipcode. Third party API [ZipCode API](https://www.zipcodeapi.com/) is incorporated in the code for this, but it is temporarly brought down as there is a Quota limit under Free Key subscription. To ingerate with more advannced Googles Map Distance Matrix API is a futre enhancement.
+* To filter down based on Miles radius the Zipcode input by the Buyer is used to calculate the distance with respect to the Vehicle Seller Zipcode. Third party API ([ZipCode API])(https://www.zipcodeapi.com/) is incorporated in the code for this, but it is temporarly brought down as there is a Quota limit under Free Key subscription. To ingerate with more advannced Googles Map Distance Matrix API is a futre enhancement.
 
 * Once the Search button is clicked, the buyer is presented with a initial list of vechiles which ofcourse has to be done through pagination so as to reduce the response time, and to save the network usage. Pagination is to be implmented yet.
 
