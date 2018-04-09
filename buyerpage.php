@@ -150,7 +150,7 @@
 
       // this method has to construct the suitable filters to be chosen by user according to the Type of vehicle selected, simply throwing out fixed filters for now.
       function constructFiltersToDisplay(){
-      	echo '<div class="container-fluid additional-filter-items-wrapper additional-filter-items well" style="margin-top:-1%;">
+      	echo '<div class="container-fluid additional-filter-items-wrapper additional-filter-items well" style="margin-top:-2%;">
 				<div class="additional-filter-items">
 					<form class="form-inline additional-filter-items-form" name="additionalFilters"  action="#" method="post">
 						  <input type="hidden" name="additionalFilterSubmit" value="true"></input>
