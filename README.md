@@ -17,12 +17,15 @@ As a solution for the following problem - [Problem Statement](http://www.cs.odu.
 
 * DB Connection is get from DatabaseConnection class written under **util/DatabaseConnection.php**, All the static and dynamic queries are written in **dao/Queries.php**
 
-* All the UI scripts are placed inside **resource/scripts** folder, Stylesheets are put up under folder **resource/css**.
+* All the java scripts(Used JQuery) for UI are placed inside **resource/scripts** folder, Stylesheets are put up under folder **resource/css**.
 
 * This project can be hosted on Nginix, Apache Tomcat (All servers tha can support PHP), MYSQL is the database used, **DBDumps/Trader_DBDumpV5.sql** has all the SQL create queries and dummy data needed to brig up the Database schema.
 
 
-### Features Implemented and Futre Enhancements
+### Features Implemented and Future Enhancements
+* All the features implemented are mainly oriented towards Buyer, A Buyer will select the Vechile type and enters the Tag name(Keywords) that actually ease up the search to quickly narrow down to the desired list. Entering Zipcode and Miles radius is optional.
+
+*
 
 
 
