@@ -30,7 +30,7 @@ As a solution for the following problem - [Problem Statement](http://www.cs.odu.
 
 * Once the Search button is clicked, the buyer is presented with a initial list of vechiles which ofcourse has to be done through pagination so as to reduce the response time, and to save the network usage. Pagination is to be implmented yet.
 
-* Buyer is now free to set the desired values under each of the filters provided ( Price, Mileage, Make, Model etc.,) and the desired results get updated instantly folowing the filtering rules. In addition to this high level filters, an attempt is make to filter even through the optional Meta Data that might be present on each of the Vehicle like (Body Type, Color and Trasmission etc.,) using a more dynamic query, but it is left unimplmented by the time this read me is written. This will surely be a future Enhancement.
+* Buyer is now free to set the desired values under each of the filters provided (Price, Mileage, Make, Model etc.,) and the desired results get updated instantly folowing the filtering rules. In addition to this high level filters, an attempt is make to filter even through the optional Meta Data that might be present on each of the Vehicle like (Body Type, Color and Trasmission etc.,) using a more dynamic query, but it is left unimplmented by the time this read me is written. This will surely be a future Enhancement.
 
 * Result contains the List of Cards with the basic details of the vehicle, on the click of More Info or on the Image, Buyer is now navigated to the more detailed page, where in the carousel for the list of aviable images is provided. In adition to View, Submit a review on the seller of the vehicle, Emailing the Seller is also possible.
 
