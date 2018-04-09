@@ -23,9 +23,9 @@ As a solution for the following problem - [Problem Statement](http://www.cs.odu.
 
 
 ### Features Implemented and Future Enhancements
-* All the features implemented are mainly oriented towards Buyer, A Buyer will select the Vechile type and enters the Tag name(Keywords) that actually ease up the search to quickly narrow down to the desired list. Entering Zipcode and Miles radius is optional.
+* All the features implemented are mainly oriented towards Buyer, A Buyer will select the Vechile type and enters the Tag name(Keywords) that actually ease up the search to quickly narrow down to the desired list. Filling up Zipcode and Miles radius is optional.
 
-*
+* 
 
 
 
