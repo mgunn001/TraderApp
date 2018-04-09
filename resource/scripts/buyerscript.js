@@ -123,7 +123,7 @@ function start()
 			var modelTypeCheckBoxListHTML ="";
 			var curVehicleType = $(".vehicleTypeSel").val();
 			if(selectedMakes.length == 0){
-				modelTypeCheckBoxListHTML = "First select a Make"
+				modelTypeCheckBoxListHTML = "First select a Make";
 			}
 			for(var i=0;i<selectedMakes.length;i++){
 				var curMake = selectedMakes[i];
